@@ -74,9 +74,9 @@ export const ProjectsSection = (): JSX.Element => {
   return (
     <section
       id="projects"
-      className="relative min-h-screen bg-[#222831] py-16 lg:py-24"
+      className="relative min-h-screen bg-[#222831] py-16 lg:py-24 overflow-x-hidden"
     >
-      <div className="max-w-[1440px] mx-auto px-4 lg:px-8">
+      <div className="max-w-[1440px] mx-auto px-4 lg:px-8 w-full">
         <motion.div
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
