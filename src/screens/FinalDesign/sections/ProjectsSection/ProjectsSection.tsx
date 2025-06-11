@@ -93,15 +93,15 @@ export const ProjectsSection = (): JSX.Element => {
         </motion.div>
 
         <Tabs defaultValue={firstCategoryId} className="w-full h-full">
-          <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2 lg:gap-4">
+          <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2 lg:gap-4 mb-5">
             <TabsList className="flex items-end gap-2 lg:gap-4">
               {projectCategories.map((category) => (
                 <TabsTrigger
                   key={category.id}
                   value={category.id}
-                  className={`px-4 lg:px-8 py-2 lg:py-2.5 rounded-3xl data-[state=active]:bg-color-3 bg-[#393e4680] backdrop-blur-sm`}
+                  className={`px-2 lg:px-8 py-2 lg:py-2.5 rounded-3xl data-[state=active]:bg-color-3 bg-[#393e4680] backdrop-blur-sm`}
                 >
-                  <span className="[text-shadow:0px_4px_4px_#00000080] font-['Poppins',Helvetica] font-bold text-[#eeeeee] text-sm lg:text-lg">
+                  <span className="[text-shadow:0px_4px_4px_#00000080] font-['Poppins',Helvetica] font-bold text-[#eeeeee] text-[12px] lg:text-lg">
                     {category.name}
                   </span>
                 </TabsTrigger>
