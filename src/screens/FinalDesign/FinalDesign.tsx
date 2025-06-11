@@ -7,8 +7,8 @@ import { ProjectsSection } from "./sections/ProjectsSection/ProjectsSection";
 
 export const FinalDesign = (): JSX.Element => {
   return (
-    <main className="bg-white w-full">
-      <div className="mx-auto w-full">
+    <main className="bg-white w-full overflow-x-hidden">
+      <div className="w-full overflow-x-hidden">
         <HeroSection />
         <AboutMeSection />
         <ProjectsSection />
