@@ -117,7 +117,7 @@ export const AboutMeSection = (): JSX.Element => {
                     <img
                       className="absolute w-full h-full object-contain opacity-80"
                       alt="Developer illustration"
-                      src="/keyboard-1.png"
+                      src="/icons/online-class.png"
                     />
                     <img
                       className="absolute w-16 h-16 top-4 right-4 object-contain"

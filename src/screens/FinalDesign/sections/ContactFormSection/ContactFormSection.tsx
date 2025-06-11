@@ -41,8 +41,8 @@ export const ContactFormSection = (): JSX.Element => {
               <div className="relative w-32 h-32">
                 <img
                   className="w-full h-full object-contain opacity-60"
-                  alt="Contact illustration"
-                  src="/mail-40.png"
+                  alt="Contact illustratio"
+                  src="/icons/online-class.png"
                 />
               </div>
             </div>
