@@ -2,9 +2,11 @@ import { DownloadIcon, Image, Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "../../../../components/ui/button";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const HeroSection = (): JSX.Element => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const navigate = useNavigate();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -84,7 +86,7 @@ export const HeroSection = (): JSX.Element => {
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.3 }}
                 className="fixed inset-0 bg-black/30 backdrop-blur-md z-40 md:hidden"
-                onClick={toggleMenu} // Close menu when clicking overlay
+                onClick={toggleMenu}
               />
 
               {/* Menu Panel */}
@@ -115,7 +117,7 @@ export const HeroSection = (): JSX.Element => {
                         scrollToSection("home");
                         toggleMenu();
                       }}
-                      className=" text-[#eeeeee] text-lg font-medium hover:text-[#393E46] transition-colors py-2"
+                      className="text-[#eeeeee] text-lg font-medium hover:text-[#393E46] transition-colors py-2"
                       whileHover={{ x: 10 }}
                       whileTap={{ scale: 0.95 }}
                     >
@@ -127,7 +129,7 @@ export const HeroSection = (): JSX.Element => {
                         scrollToSection("about");
                         toggleMenu();
                       }}
-                      className=" text-[#eeeeee] text-lg font-medium hover:text-[#393E46] transition-colors py-2"
+                      className="text-[#eeeeee] text-lg font-medium hover:text-[#393E46] transition-colors py-2"
                       whileHover={{ x: 10 }}
                       whileTap={{ scale: 0.95 }}
                     >
@@ -139,7 +141,7 @@ export const HeroSection = (): JSX.Element => {
                         scrollToSection("contact");
                         toggleMenu();
                       }}
-                      className=" text-[#eeeeee] text-lg font-medium hover:text-[#393E46] transition-colors py-2"
+                      className="text-[#eeeeee] text-lg font-medium hover:text-[#393E46] transition-colors py-2"
                       whileHover={{ x: 10 }}
                       whileTap={{ scale: 0.95 }}
                     >
@@ -183,7 +185,10 @@ export const HeroSection = (): JSX.Element => {
                 ease: "easeInOut",
               }}
             >
-              <Button className="px-6 lg:px-8 py-2.5 bg-color-3 rounded-3xl font-['Poppins',Helvetica] font-bold text-[#eeeeee] text-base lg:text-lg shadow-[0px_4px_4px_#00000080] w-full sm:w-auto hover:bg-color-3/90 transition-colors">
+              <Button
+                onClick={() => navigate("/hire-me")}
+                className="px-6 lg:px-8 py-2.5 bg-color-3 rounded-3xl font-['Poppins',Helvetica] font-bold text-[#eeeeee] text-base lg:text-lg shadow-[0px_4px_4px_#00000080] w-full sm:w-auto hover:bg-color-3/90 transition-colors"
+              >
                 Hire me
               </Button>
             </motion.div>
@@ -199,19 +204,9 @@ export const HeroSection = (): JSX.Element => {
                 delay: 0.5,
               }}
             >
-              <Button
-                onClick={() => {
-                  const link = document.createElement("a");
-                  link.href = "/cv/resume.pdf";
-                  link.download = "resume.pdf";
-                  document.body.appendChild(link);
-                  link.click();
-                  document.body.removeChild(link);
-                }}
-                className="px-6 lg:px-8 py-2.5 bg-[#393e46bf] rounded-3xl backdrop-blur-[2px] font-['Poppins',Helvetica] font-bold text-[#eeeeee] text-base lg:text-lg shadow-[0px_4px_4px_#00000080] flex items-center gap-2.5 w-full sm:w-auto hover:bg-[#393e46] transition-colors"
-              >
+              <Button className="px-6 lg:px-8 py-2.5 bg-[#393e4680] rounded-3xl font-['Poppins',Helvetica] font-bold text-[#eeeeee] text-base lg:text-lg shadow-[0px_4px_4px_#00000080] w-full sm:w-auto hover:bg-[#393e4680]/90 transition-colors">
+                <DownloadIcon className="w-5 h-5 mr-2" />
                 Download CV
-                <DownloadIcon className="w-5 h-5 lg:w-6 lg:h-6" />
               </Button>
             </motion.div>
           </motion.div>

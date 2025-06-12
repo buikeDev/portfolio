@@ -52,7 +52,11 @@ export const ContactFormSection = (): JSX.Element => {
         {/* Right side with form */}
         <Card className="lg:w-1/2 w-full bg-transparent border-none">
           <CardContent className="p-0">
-            <form className="flex flex-col gap-6 w-full max-w-[600px]">
+            <form
+              action="https://formspree.io/f/xwpborjn"
+              method="POST"
+              className="flex flex-col gap-6 w-full max-w-[600px]"
+            >
               <div className="flex flex-col lg:flex-row gap-6 w-full">
                 {formFields.slice(0, 2).map((field) => (
                   <div key={field.id} className="flex flex-col gap-2.5 flex-1">
@@ -63,6 +67,8 @@ export const ContactFormSection = (): JSX.Element => {
                       {field.label}
                     </label>
                     <Input
+                      type="email"
+                      name="email"
                       id={field.id}
                       placeholder={field.placeholder}
                       className="bg-[#393e4680] text-[#eeeeee] placeholder:text-[#eeeeee80] placeholder:font-bold rounded-2xl py-3 lg:py-4 px-4 lg:px-6 h-auto text-base"
@@ -79,6 +85,7 @@ export const ContactFormSection = (): JSX.Element => {
                   {formFields[2].label}
                 </label>
                 <Textarea
+                  name="message"
                   id="message"
                   placeholder={formFields[2].placeholder}
                   className="bg-[#393e4680] text-[#eeeeee] placeholder:text-[#eeeeee80] placeholder:font-bold rounded-2xl py-3 lg:py-4 px-4 lg:px-6 h-[200px] lg:h-[280px] resize-none text-base"

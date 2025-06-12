@@ -1,7 +1,7 @@
 import {
   FacebookIcon,
   HomeIcon,
-  InstagramIcon,
+  LinkedinIcon,
   PhoneIcon,
   TwitterIcon,
   UserIcon,
@@ -35,18 +35,17 @@ export const FooterSection = (): JSX.Element => {
     {
       icon: <FacebookIcon className="w-5 h-5 lg:w-6 lg:h-6" />,
       label: "Facebook",
-    },
-    {
-      icon: <InstagramIcon className="w-5 h-5 lg:w-6 lg:h-6" />,
-      label: "Instagram",
+      url: "https://www.facebook.com/ago.bkem?mibextid=wwXIfr&mibextid=wwXIfr",
     },
     {
       icon: <TwitterIcon className="w-5 h-5 lg:w-6 lg:h-6" />,
       label: "Twitter",
+      url: "https://x.com/bkem_der_brainy?s=21",
     },
     {
-      icon: <YoutubeIcon className="w-5 h-5 lg:w-6 lg:h-6" />,
-      label: "Youtube",
+      icon: <LinkedinIcon className="w-5 h-5 lg:w-6 lg:h-6" />,
+      label: "Linkedin",
+      url: "https://linkedin.com/in/ago-chukwubuikem-aa84a1305",
     },
   ];
 
