@@ -87,8 +87,10 @@ export const FooterSection = (): JSX.Element => {
               size="icon"
               className="w-10 h-10 lg:w-12 lg:h-12 bg-color-2 rounded-full flex items-center justify-center hover:bg-color-3"
             >
-              {social.icon}
-              <span className="sr-only">{social.label}</span>
+              <a href={social.url}>
+                {social.icon}
+                <span className="sr-only">{social.label}</span>
+              </a>
             </Button>
           ))}
         </div>
