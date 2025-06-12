@@ -24,7 +24,7 @@ export const HeroSection = (): JSX.Element => {
   const navItems = [
     { label: "Home", href: "#" },
     { label: "About Me", href: "#about" },
-    { label: "Contact", href: "#" },
+    { label: "Contact", href: "#contact" },
   ];
 
   return (
@@ -93,7 +93,7 @@ export const HeroSection = (): JSX.Element => {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: "100%" }}
                 transition={{ duration: 0.3, ease: "easeInOut" }}
-                className="fixed top-0 right-0 h-[80vh] w-full w-[100%] bg-[#393e46] z-50 shadow-xl md:hidden"
+                className="fixed top-1 left-[10%] h-[60vh] w-full w-[85%] bg-[#393e46] z-50 shadow-xl md:hidden rounded-[18px] bg-gradient-to-b from-[#00ADB5] to-[#393E46] border-white"
               >
                 <div className="flex flex-col h-full">
                   {/* Close Button */}
@@ -115,7 +115,7 @@ export const HeroSection = (): JSX.Element => {
                         scrollToSection("home");
                         toggleMenu();
                       }}
-                      className=" text-[#eeeeee] text-lg font-medium hover:text-[#00adb5] transition-colors py-2"
+                      className=" text-[#eeeeee] text-lg font-medium hover:text-[#393E46] transition-colors py-2"
                       whileHover={{ x: 10 }}
                       whileTap={{ scale: 0.95 }}
                     >
@@ -127,7 +127,7 @@ export const HeroSection = (): JSX.Element => {
                         scrollToSection("about");
                         toggleMenu();
                       }}
-                      className=" text-[#eeeeee] text-lg font-medium hover:text-[#00adb5] transition-colors py-2"
+                      className=" text-[#eeeeee] text-lg font-medium hover:text-[#393E46] transition-colors py-2"
                       whileHover={{ x: 10 }}
                       whileTap={{ scale: 0.95 }}
                     >
@@ -139,7 +139,7 @@ export const HeroSection = (): JSX.Element => {
                         scrollToSection("contact");
                         toggleMenu();
                       }}
-                      className=" text-[#eeeeee] text-lg font-medium hover:text-[#00adb5] transition-colors py-2"
+                      className=" text-[#eeeeee] text-lg font-medium hover:text-[#393E46] transition-colors py-2"
                       whileHover={{ x: 10 }}
                       whileTap={{ scale: 0.95 }}
                     >

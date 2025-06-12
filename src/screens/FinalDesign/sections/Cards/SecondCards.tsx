@@ -9,14 +9,14 @@ interface ProjectCard {
 
 const projects: ProjectCard[] = [
   {
-    href: "https://settings-gilt.vercel.app/general",
-    imageSrc: "/images/settings.png",
+    href: "https://mentor-match-admin-plan.vercel.app/",
+    imageSrc: "/images/mentor.png",
     altText: "Settings App Preview",
     previewClass: "top-[40px] lg:top-[61px] lg:left-[51px] lg:transform-none",
   },
   {
-    href: "https://bycto-com-7vui.vercel.app/",
-    imageSrc: "/images/landingPage.png",
+    href: "https://jobmatchapp-4eaj.vercel.app/",
+    imageSrc: "/images/jobMatch.png",
     altText: "Landing Page Preview",
     previewClass: "w-[200px] lg:w-[265px] h-[120px] lg:h-[158px]",
   },

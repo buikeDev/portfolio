@@ -17,7 +17,7 @@ export const ContactFormSection = (): JSX.Element => {
   ];
 
   return (
-    <section className="relative w-full bg-color-1 py-16 lg:py-16">
+    <section id="contact" className="relative w-full bg-color-1 py-16 lg:py-16">
       <div className="container mx-auto flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-8 px-6">
         {/* Left side with heading and illustration */}
         <div className="flex flex-col space-y-8 lg:w-1/2 text-center lg:text-left">
@@ -91,9 +91,9 @@ export const ContactFormSection = (): JSX.Element => {
               >
                 Send Message
                 <img
-                  className="w-6 h-6 lg:w-[30px] lg:h-[31px]"
+                  className="w-6 h-6 lg:w-[30px] lg:h-[31px] align-center pt-[3px]"
                   alt="Send"
-                  src="/send.svg"
+                  src="/icons/send.png"
                 />
               </Button>
             </form>
@@ -102,16 +102,6 @@ export const ContactFormSection = (): JSX.Element => {
       </div>
 
       {/* Decorative elements - hidden on mobile */}
-      <img
-        className="absolute w-[75px] h-[72px] bottom-[169px] right-[165px] hidden xl:block"
-        alt="Mail"
-        src="/mail-40.png"
-      />
-      <img
-        className="absolute w-[153px] h-[115px] top-[60px] right-[467px] hidden xl:block"
-        alt="Keyboard"
-        src="/keyboard-41.png"
-      />
 
       {/* Divider line */}
       <div className="w-full h-px bg-[#eeeeee]/10 absolute bottom-0"></div>

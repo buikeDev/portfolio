@@ -21,8 +21,8 @@ const projects: ProjectCard[] = [
     previewClass: "w-[200px] lg:w-[265px] h-[120px] lg:h-[158px]",
   },
   {
-    href: "https://bycto-com-7vui.vercel.app/",
-    imageSrc: "/images/landingPage.png",
+    href: "https://bycto-com.vercel.app/",
+    imageSrc: "/images/bytco.png",
     altText: "Landing Page Preview",
     previewClass: "w-[200px] lg:w-[265px] h-[120px] lg:h-[158px]",
   },

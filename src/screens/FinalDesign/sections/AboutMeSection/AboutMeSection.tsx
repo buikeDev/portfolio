@@ -6,7 +6,15 @@ export const AboutMeSection = (): JSX.Element => {
   // Data for the floating tech elements - simplified for mobile
   const [isExpanded, setIsExpanded] = useState(false);
 
-  const fullText = `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur tempus urna at turpis condimentum lobortis and so on and so forth`;
+  const fullText = `Hi there! 👋 I’m Ago Chukwubuikem Jideofor, a passionate Full Stack Web Developer with expertise in building modern, scalable, and user-friendly web applications. I thrive on turning ideas into functional and visually appealing digital experiences.
+
+With a strong foundation in HTML, CSS, and JavaScript, I specialize in frontend development using React.js and Next.js, ensuring fast, responsive, and SEO-friendly applications. On the backend, I work with technologies like Node.js, Express, and databases (SQL & NoSQL) to create seamless full-stack solutions.
+
+I’m dedicated to writing clean, efficient code while staying updated with the latest industry trends. Whether it’s crafting intuitive UIs or optimizing server performance, I love solving problems and delivering high-quality results.
+
+When I’m not coding, you’ll find me exploring new tech, contributing to open-source projects, or sharing knowledge with the developer community.
+
+Let’s build something amazing together`;
 
   // Function to truncate text to 30 words
   const truncateText = (text: string, wordCount: number) => {
@@ -31,7 +39,7 @@ export const AboutMeSection = (): JSX.Element => {
             whileInView={{ x: 0, opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="flex flex-col max-w-full lg:max-w-[389px] text-center lg:text-left"
+            className="flex flex-col max-w-full lg:max-w-[550px] text-center lg:text-left"
           >
             <motion.h2
               initial={{ y: 20, opacity: 0 }}
@@ -117,7 +125,7 @@ export const AboutMeSection = (): JSX.Element => {
                     <img
                       className="absolute w-full h-full object-contain opacity-80"
                       alt="Developer illustration"
-                      src="/icons/online-class.png"
+                      src="/icons/user-profile.png"
                     />
                     <img
                       className="absolute w-16 h-16 top-4 right-4 object-contain"

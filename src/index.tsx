@@ -5,5 +5,5 @@ import { FinalDesign } from "./screens/FinalDesign/FinalDesign";
 createRoot(document.getElementById("app") as HTMLElement).render(
   <StrictMode>
     <FinalDesign />
-  </StrictMode>,
+  </StrictMode>
 );
