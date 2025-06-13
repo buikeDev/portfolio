@@ -95,7 +95,7 @@ export const HeroSection = (): JSX.Element => {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: "100%" }}
                 transition={{ duration: 0.3, ease: "easeInOut" }}
-                className="fixed top-1 left-[10%] h-[60vh] w-full w-[85%] bg-[#393e46] z-50 shadow-xl md:hidden rounded-[18px] bg-gradient-to-b from-[#00ADB5] to-[#393E46] border-white"
+                className="fixed top-1 left-[10%] transform -translate-x-1/2 h-[60vh] w-[85%] bg-[#393e46] z-50 shadow-xl md:hidden rounded-[18px] bg-gradient-to-b from-[#00ADB5] to-[#393E46] border-white"
               >
                 <div className="flex flex-col h-full">
                   {/* Close Button */}
