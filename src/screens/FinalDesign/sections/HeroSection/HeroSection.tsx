@@ -204,7 +204,17 @@ export const HeroSection = (): JSX.Element => {
                 delay: 0.5,
               }}
             >
-              <Button className="px-6 lg:px-8 py-2.5 bg-[#393e4680] rounded-3xl font-['Poppins',Helvetica] font-bold text-[#eeeeee] text-base lg:text-lg shadow-[0px_4px_4px_#00000080] w-full sm:w-auto hover:bg-[#393e4680]/90 transition-colors">
+              <Button
+                onClick={() => {
+                  const link = document.createElement("a");
+                  link.href = "/cv/resume.pdf";
+                  link.download = "resume.pdf";
+                  document.body.appendChild(link);
+                  link.click();
+                  document.body.removeChild(link);
+                }}
+                className="px-6 lg:px-8 py-2.5 bg-[#393e4680] rounded-3xl font-['Poppins',Helvetica] font-bold text-[#eeeeee] text-base lg:text-lg shadow-[0px_4px_4px_#00000080] w-full sm:w-auto hover:bg-[#393e4680]/90 transition-colors"
+              >
                 <DownloadIcon className="w-5 h-5 mr-2" />
                 Download CV
               </Button>
