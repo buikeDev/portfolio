@@ -12,7 +12,7 @@ export const HeroSection = (): JSX.Element => {
   // Navigation items
 
   return (
-    <section className="relative w-full min-h-screen bg-color-1 overflow-hidden py-8">
+    <section className="relative w-full md:min-h-screen min-h-[80vh] bg-color-1 overflow-hidden py-20 lg:py-4">
       <div className="relative h-full">
         {/* Main content */}
         <div className="flex flex-col items-center lg:items-start gap-8 lg:gap-12 px-6 lg:px-0 pt-12 lg:pt-0 lg:absolute lg:top-[334px] lg:left-[180px] text-center lg:text-left">
