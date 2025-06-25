@@ -4,11 +4,13 @@ import { ContactFormSection } from "./sections/ContactFormSection/ContactFormSec
 import { FooterSection } from "./sections/FooterSection/FooterSection";
 import { HeroSection } from "./sections/HeroSection";
 import { ProjectsSection } from "./sections/ProjectsSection/ProjectsSection";
+import Header from "./sections/Header/Index";
 
 export const FinalDesign = (): JSX.Element => {
   return (
-    <main className="bg-white w-full overflow-x-hidden">
+    <main className="w-full overflow-x-hidden">
       <div className="w-full overflow-x-hidden">
+        <Header />
         <HeroSection />
         <AboutMeSection />
         <ProjectsSection />
