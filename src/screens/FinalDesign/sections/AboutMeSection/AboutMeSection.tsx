@@ -1,20 +1,20 @@
-import { useState } from "react";
-import { motion } from "framer-motion";
+import { useRef, useState } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { Button } from "../../../../components/ui/button";
 
 export const AboutMeSection = (): JSX.Element => {
   // Data for the floating tech elements - simplified for mobile
   const [isExpanded, setIsExpanded] = useState(false);
 
-  const fullText = `Hi there! 👋 I’m Ago Chukwubuikem Jideofor, a passionate Full Stack Web Developer with expertise in building modern, scalable, and user-friendly web applications. I thrive on turning ideas into functional and visually appealing digital experiences.
+  const fullText = `Hi there! 👋 I'm Ago Chukwubuikem Jideofor, a passionate Full Stack Web Developer with expertise in building modern, scalable, and user-friendly web applications. I thrive on turning ideas into functional and visually appealing digital experiences.
 
 With a strong foundation in HTML, CSS, and JavaScript, I specialize in frontend development using React.js and Next.js, ensuring fast, responsive, and SEO-friendly applications. On the backend, I work with technologies like Node.js, Express, and databases (SQL & NoSQL) to create seamless full-stack solutions.
 
-I’m dedicated to writing clean, efficient code while staying updated with the latest industry trends. Whether it’s crafting intuitive UIs or optimizing server performance, I love solving problems and delivering high-quality results.
+I'm dedicated to writing clean, efficient code while staying updated with the latest industry trends. Whether it's crafting intuitive UIs or optimizing server performance, I love solving problems and delivering high-quality results.
 
-When I’m not coding, you’ll find me exploring new tech, contributing to open-source projects, or sharing knowledge with the developer community.
+When I'm not coding, you'll find me exploring new tech, contributing to open-source projects, or sharing knowledge with the developer community.
 
-Let’s build something amazing together`;
+Let's build something amazing together`;
 
   // Function to truncate text to 30 words
   const truncateText = (text: string, wordCount: number) => {
@@ -24,6 +24,17 @@ Let’s build something amazing together`;
   };
 
   const displayedText = isExpanded ? fullText : truncateText(fullText, 30);
+
+  const sectionRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"],
+  });
+
+  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
+  const y = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [50, 0, 0, -50]);
+
+  const paragraphs = fullText.split("\n\n");
 
   return (
     <section
@@ -35,6 +46,7 @@ Let’s build something amazing together`;
         <div className="flex flex-col lg:flex-row items-center lg:items-start justify-between px-6 lg:px-24 pt-8 lg:pt-[255px] gap-12 lg:gap-0">
           {/* Left side - Text content */}
           <motion.div
+            style={{ opacity, y }}
             initial={{ x: -100, opacity: 0 }}
             whileInView={{ x: 0, opacity: 1 }}
             viewport={{ once: true }}
@@ -42,6 +54,7 @@ Let’s build something amazing together`;
             className="flex flex-col max-w-full lg:max-w-[550px] text-center lg:text-left"
           >
             <motion.h2
+              style={{ opacity, y }}
               initial={{ y: 20, opacity: 0 }}
               whileInView={{ y: 0, opacity: 1 }}
               viewport={{ once: true }}
@@ -52,27 +65,17 @@ Let’s build something amazing together`;
               <span className="text-white">&nbsp;</span>
               <span className="text-[#00adb5]">me</span>
             </motion.h2>
-            <motion.p
-              initial={{ y: 20, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="font-['Poppins',Helvetica] font-normal text-base lg:text-lg text-[#eeeeeebf] mt-6 lg:mt-8"
-            >
-              {displayedText}
-              {fullText.split(" ").length > 30 && (
-                <Button
-                  variant="link"
-                  className="font-bold text-[#eeeeee] p-0 text-base lg:text-lg hover:text-[#00adb5] transition-colors"
-                  onClick={() => setIsExpanded(!isExpanded)}
-                >
-                  {isExpanded ? "Read less" : "Read more"}
-                </Button>
-              )}
-            </motion.p>
+            <div>
+              {paragraphs.map((para, idx) => (
+                <p key={idx} className="mb-4 text-base text-[#eeeeee]">
+                  {para}
+                </p>
+              ))}
+            </div>
 
             {/* Vector below text - hidden on mobile */}
             <motion.img
+              style={{ opacity, y }}
               initial={{ y: 50, opacity: 0 }}
               whileInView={{ y: 0, opacity: 1 }}
               viewport={{ once: true }}
@@ -85,6 +88,7 @@ Let’s build something amazing together`;
 
           {/* Right side - Illustration - simplified for mobile */}
           <motion.div
+            style={{ opacity, y }}
             initial={{ x: 100, opacity: 0 }}
             whileInView={{ x: 0, opacity: 1 }}
             viewport={{ once: true }}
@@ -105,6 +109,7 @@ Let’s build something amazing together`;
               <div className="relative w-full lg:w-[661px] h-[300px] lg:h-[564px] top-[5px] left-[3px]">
                 {/* Floating elements - only show on desktop */}
                 <motion.img
+                  style={{ opacity, y }}
                   initial={{ scale: 0.8, opacity: 0 }}
                   whileInView={{ scale: 1, opacity: 1 }}
                   viewport={{ once: true }}
@@ -115,6 +120,7 @@ Let’s build something amazing together`;
 
                 {/* Simplified mobile illustration */}
                 <motion.div
+                  style={{ opacity, y }}
                   initial={{ scale: 0.8, opacity: 0 }}
                   whileInView={{ scale: 1, opacity: 1 }}
                   viewport={{ once: true }}
@@ -125,7 +131,7 @@ Let’s build something amazing together`;
                     <img
                       className="absolute w-full h-full object-contain opacity-80"
                       alt="Developer illustration"
-                      src="/icons/user-profile.png"
+                      src="/icons/lazy-coder.png"
                     />
                     <img
                       className="absolute w-16 h-16 top-4 right-4 object-contain"
@@ -142,6 +148,7 @@ Let’s build something amazing together`;
 
             {/* Character illustration - simplified for mobile */}
             <motion.div
+              style={{ opacity, y }}
               initial={{ scale: 0.8, opacity: 0 }}
               whileInView={{ scale: 1, opacity: 1 }}
               viewport={{ once: true }}

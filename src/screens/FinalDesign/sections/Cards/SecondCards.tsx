@@ -15,25 +15,25 @@ interface ProjectCard {
 const projects: ProjectCard[] = [
   {
     href: "#",
-    imageSrc: "/images/playo.png",
-    altText: "Playo Gamifi-App Preview",
-    title: "Playo Gamifi-App",
+    imageSrc: "/images/Mentorshipreq.png",
+    altText: "Mentorship Request Dashboard Preview",
+    title: "Mentorship Request Dashboard",
     description:
-      "Implemented modern UI with animations, clean layouts, and optimized performance using React, Tailwind CSS, and Gsap.",
+      "A feature-rich admin panel built with React, Next.js, and Tailwind CSS that streamlines the tracking and management of mentorship requests within a job search platform. This dashboard allows admins to efficiently monitor user-mentor engagement, manage request statuses, and ensure smooth mentorship workflows. Designed with a responsive and intuitive UI, the system promotes better decision-making and user support through clear data visualization and seamless UX.",
     tech: ["React", "Next.js", "TypeScript", "Tailwind CSS"],
     codeUrl: "#",
-    demoUrl: "#",
+    demoUrl: "https://mentor-match-admin-plan.vercel.app/",
   },
   {
     href: "#",
-    imageSrc: "/images/taskmanager.png",
-    altText: "Task Management App Preview",
-    title: "Task Management App",
+    imageSrc: "/images/settings.png",
+    altText: "TSettings Dashboard Preview",
+    title: "Settings Dasboard",
     description:
       "Built a fully responsive task management web app with features like task creation, status tracking, and deadline reminders.",
-    tech: ["React", "Node.js", "MongoDB", "Express"],
+    tech: ["React", "Next.js", "TypeScript", "Tailwind CSS"],
     codeUrl: "#",
-    demoUrl: "#",
+    demoUrl: "https://settings-gilt.vercel.app/",
   },
   // Add more projects as needed
 ];

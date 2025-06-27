@@ -7,10 +7,6 @@ import { useNavigate } from "react-router-dom";
 export const HeroSection = (): JSX.Element => {
   const navigate = useNavigate();
 
-  // Tech icons and elements data for the floating elements
-
-  // Navigation items
-
   return (
     <section className="relative w-full md:min-h-screen min-h-[80vh] bg-color-1 overflow-hidden py-20 lg:py-4">
       <div className="relative h-full">

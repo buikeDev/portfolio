@@ -35,11 +35,6 @@ const projectCategories: Category[] = [
     name: "2nd Page",
     projects: [],
   },
-  {
-    id: "3",
-    name: "3rd Page",
-    projects: [],
-  },
 ];
 
 const firstCategoryId = projectCategories[0].id;
@@ -82,7 +77,7 @@ export const ProjectsSection = (): JSX.Element => {
                   <TabsTrigger
                     key={category.id}
                     value={category.id}
-                    className={`px-2 lg:px-8 py-2 lg:py-2.5 rounded-3xl data-[state=active]:bg-color-3 bg-[#393e4680] backdrop-blur-sm`}
+                    className={`px-2 lg:px-8 py-2 lg:py-2.5 rounded-3xl data-[state=active]:border-color-3 bg-[#393e4680] backdrop-blur-sm`}
                   >
                     <span className="[text-shadow:0px_4px_4px_#00000080] font-['Poppins',Helvetica] font-bold text-[#eeeeee] text-[12px] lg:text-lg">
                       {category.name}

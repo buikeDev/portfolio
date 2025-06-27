@@ -42,7 +42,7 @@ const projects: ProjectCard[] = [
     title: "NemeBlog App",
     description:
       "Built a dynamic, SEO-optimized blog application using TypeScript, React, and Sanity.io CMS. Designed and developed a fully responsive platform centered around themes like relationships, health, education, and self-growth. Integrated dynamic routing, pagination, and category-based filtering, while leveraging Sanity’s GROQ for structured content querying. Implemented clean, semantic markup and metadata optimization to enhance discoverability on search engines. The result is a performant, scalable blog with real-time CMS integration—perfect for content teams and editorial workflows.",
-    tech: ["Next.js", "TypeScript", "Tailwind CSS", "Gsap"],
+    tech: ["Next.js", "TypeScript", "Tailwind CSS", "GROQ"],
     codeUrl: "#",
     demoUrl: "https://blog-t9vn.vercel.app/",
   },

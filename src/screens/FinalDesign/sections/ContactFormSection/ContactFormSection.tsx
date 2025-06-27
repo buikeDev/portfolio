@@ -40,9 +40,9 @@ export const ContactFormSection = (): JSX.Element => {
             <div className="lg:hidden absolute inset-0 flex items-center justify-center">
               <div className="relative w-32 h-32">
                 <img
-                  className="w-full h-full object-contain opacity-60"
+                  className="w-full h-full object-contain"
                   alt="Contact illustratio"
-                  src="/icons/online-class.png"
+                  src="/icons/hacker.png"
                 />
               </div>
             </div>

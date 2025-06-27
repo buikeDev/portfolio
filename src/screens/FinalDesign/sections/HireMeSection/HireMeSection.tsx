@@ -129,8 +129,8 @@ export const HireMeSection = (): JSX.Element => {
                 Subject
               </label>
               <input
-                type="email"
-                name="email"
+                type="text"
+                name="subject"
                 id="subject"
                 className="w-full px-4 py-2 rounded-lg bg-[#393e4680] text-[#eeeeee] border border-[#393e46] focus:outline-none focus:border-[#00adb5]"
                 placeholder="What's this about?"
