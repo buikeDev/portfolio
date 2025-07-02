@@ -1,10 +1,10 @@
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { Button } from "../../../../components/ui/button";
+// import { Button } from "../../../../components/ui/button";
 
 export const AboutMeSection = (): JSX.Element => {
   // Data for the floating tech elements - simplified for mobile
-  const [isExpanded, setIsExpanded] = useState(false);
+  // const [isExpanded, setIsExpanded] = useState(false);
 
   const fullText = `Hi there! 👋 I'm Ago Chukwubuikem Jideofor, a passionate Full Stack Web Developer with expertise in building modern, scalable, and user-friendly web applications. I thrive on turning ideas into functional and visually appealing digital experiences.
 
@@ -17,13 +17,13 @@ When I'm not coding, you'll find me exploring new tech, contributing to open-sou
 Let's build something amazing together`;
 
   // Function to truncate text to 30 words
-  const truncateText = (text: string, wordCount: number) => {
-    const words = text.split(" ");
-    if (words.length <= wordCount) return text;
-    return words.slice(0, wordCount).join(" ") + "...";
-  };
+  // const truncateText = (text: string, wordCount: number) => {
+  //   const words = text.split(" ");
+  //   if (words.length <= wordCount) return text;
+  //   return words.slice(0, wordCount).join(" ") + "...";
+  // };
 
-  const displayedText = isExpanded ? fullText : truncateText(fullText, 30);
+  // const displayedText = isExpanded ? fullText : truncateText(fullText, 30);
 
   const sectionRef = useRef(null);
   const { scrollYProgress } = useScroll({

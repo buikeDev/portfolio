@@ -1,5 +1,3 @@
-import React from "react";
-
 interface ProjectCard {
   href: string;
   imageSrc: string;
@@ -32,7 +30,7 @@ const projects: ProjectCard[] = [
     description:
       "Built a fully responsive task management web app with features like task creation, status tracking, and deadline reminders.",
     tech: ["React", "Next.js", "TypeScript", "Tailwind CSS"],
-    codeUrl: "#",
+    codeUrl: "https://github.com/buikeDev/settings",
     demoUrl: "https://settings-gilt.vercel.app/",
   },
   // Add more projects as needed

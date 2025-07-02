@@ -1,4 +1,4 @@
-import React from "react";
+
 import { AboutMeSection } from "./sections/AboutMeSection";
 import { ContactFormSection } from "./sections/ContactFormSection/ContactFormSection";
 import { FooterSection } from "./sections/FooterSection/FooterSection";

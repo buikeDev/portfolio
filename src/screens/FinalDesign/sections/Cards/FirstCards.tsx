@@ -1,5 +1,3 @@
-import React from "react";
-
 interface ProjectCard {
   href: string;
   imageSrc: string;
@@ -21,7 +19,7 @@ const projects: ProjectCard[] = [
     description:
       "Designed and developed a responsive landing page for a cryptocurrency trading platform using HTML, CSS, and JavaScript. The project highlights key features, market trends, and user benefits through sleek UI design and smooth animations. Optimized for mobile and desktop, it ensures fast load times and cross-browser compatibility—delivering a polished user experience and high engagement.",
     tech: ["HTML", "CSS", "JavaScript"],
-    codeUrl: "#",
+    codeUrl: "https://github.com/buikeDev/bycto.com",
     demoUrl: "https://bycto-com.vercel.app/",
   },
   {
@@ -32,7 +30,7 @@ const projects: ProjectCard[] = [
     description:
       "Developed a responsive AI-powered landing page for Neo AI, showcasing product features, benefits, and integration use cases.",
     tech: ["Next.js", "TypeScript", "Tailwind CSS"],
-    codeUrl: "#",
+    codeUrl: "https://github.com/buikeDev/landingPage",
     demoUrl: "https://bycto-com-7vui.vercel.app/",
   },
   {
@@ -43,7 +41,7 @@ const projects: ProjectCard[] = [
     description:
       "Built a dynamic, SEO-optimized blog application using TypeScript, React, and Sanity.io CMS. Designed and developed a fully responsive platform centered around themes like relationships, health, education, and self-growth. Integrated dynamic routing, pagination, and category-based filtering, while leveraging Sanity’s GROQ for structured content querying. Implemented clean, semantic markup and metadata optimization to enhance discoverability on search engines. The result is a performant, scalable blog with real-time CMS integration—perfect for content teams and editorial workflows.",
     tech: ["Next.js", "TypeScript", "Tailwind CSS", "GROQ"],
-    codeUrl: "#",
+    codeUrl: "https://github.com/buikeDev/blog",
     demoUrl: "https://blog-t9vn.vercel.app/",
   },
   // Add more projects as needed

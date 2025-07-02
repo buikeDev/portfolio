@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { useNavigate } from "react-router-dom";
+
 import { Menu, X } from "lucide-react";
 
 export default function Header() {
@@ -24,7 +24,7 @@ export default function Header() {
     };
   }, []);
 
-  const navigate = useNavigate();
+  
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
