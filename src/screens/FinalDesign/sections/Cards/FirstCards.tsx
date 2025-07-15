@@ -13,6 +13,17 @@ interface ProjectCard {
 const projects: ProjectCard[] = [
   {
     href: "#",
+    imageSrc: "/images/NemeBlog.png",
+    altText: "NemeBlog App Preview",
+    title: "NemeBlog App",
+    description:
+      "Built a dynamic, SEO-optimized blog application using TypeScript, React, and Sanity.io CMS. Designed and developed a fully responsive platform centered around themes like relationships, health, education, and self-growth. Integrated dynamic routing, pagination, and category-based filtering, while leveraging Sanity’s GROQ for structured content querying. Implemented clean, semantic markup and metadata optimization to enhance discoverability on search engines. The result is a performant, scalable blog with real-time CMS integration—perfect for content teams and editorial workflows.",
+    tech: ["Next.js", "TypeScript", "Tailwind CSS", "GROQ"],
+    codeUrl: "https://github.com/buikeDev/blog",
+    demoUrl: "https://blog-t9vn.vercel.app/",
+  },
+  {
+    href: "#",
     imageSrc: "/images/bytco.png",
     altText: "Bytco App Preview",
     title: "Bytco",
@@ -24,26 +35,16 @@ const projects: ProjectCard[] = [
   },
   {
     href: "#",
-    imageSrc: "/images/landingPage.png",
-    altText: "Neo-AI App Preview",
-    title: "Neo-AI App",
+    imageSrc: "/images/beekeys.png",
+    altText: "beekeys App Preview",
+    title: "beekeys",
     description:
-      "Developed a responsive AI-powered landing page for Neo AI, showcasing product features, benefits, and integration use cases.",
-    tech: ["Next.js", "TypeScript", "Tailwind CSS"],
-    codeUrl: "https://github.com/buikeDev/landingPage",
-    demoUrl: "https://bycto-com-7vui.vercel.app/",
+      "A sleek, responsive landing page designed to introduce a trust-driven platform for discovering and connecting with local businesses. The page highlights core services (business owners, contributors, registrars) and key value propositions like transparency, community feedback, and local visibility.",
+    tech: ["HTML", "CSS", "Typescricpt", "React"],
+    codeUrl: "https://github.com/buikeDev/beekeys",
+    demoUrl: "https://beekeys-nine.vercel.app",
   },
-  {
-    href: "#",
-    imageSrc: "/images/NemeBlog.png",
-    altText: "NemeBlog App Preview",
-    title: "NemeBlog App",
-    description:
-      "Built a dynamic, SEO-optimized blog application using TypeScript, React, and Sanity.io CMS. Designed and developed a fully responsive platform centered around themes like relationships, health, education, and self-growth. Integrated dynamic routing, pagination, and category-based filtering, while leveraging Sanity’s GROQ for structured content querying. Implemented clean, semantic markup and metadata optimization to enhance discoverability on search engines. The result is a performant, scalable blog with real-time CMS integration—perfect for content teams and editorial workflows.",
-    tech: ["Next.js", "TypeScript", "Tailwind CSS", "GROQ"],
-    codeUrl: "https://github.com/buikeDev/blog",
-    demoUrl: "https://blog-t9vn.vercel.app/",
-  },
+
   // Add more projects as needed
 ];
 

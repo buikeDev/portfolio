@@ -33,6 +33,18 @@ const projects: ProjectCard[] = [
     codeUrl: "https://github.com/buikeDev/settings",
     demoUrl: "https://settings-gilt.vercel.app/",
   },
+  {
+    href: "#",
+    imageSrc: "/images/landingPage.png",
+    altText: "Neo-AI App Preview",
+    title: "Neo-AI App",
+    description:
+      "Developed a responsive AI-powered landing page for Neo AI, showcasing product features, benefits, and integration use cases.",
+    tech: ["Next.js", "TypeScript", "Tailwind CSS"],
+    codeUrl: "https://github.com/buikeDev/landingPage",
+    demoUrl: "https://bycto-com-7vui.vercel.app/",
+  },
+
   // Add more projects as needed
 ];
 
