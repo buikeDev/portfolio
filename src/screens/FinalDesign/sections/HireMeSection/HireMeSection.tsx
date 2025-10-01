@@ -10,6 +10,8 @@ import {
   Youtube,
   Linkedin,
 } from "lucide-react";
+import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export const HireMeSection = (): JSX.Element => {
   // Social media links data
@@ -73,7 +75,7 @@ export const HireMeSection = (): JSX.Element => {
 
         <motion.div
           style={{ opacity, y }}
-          className="text-center mb-12 lg:mb-16"
+          className="text-center mb-8 lg:mb-13"
         >
           <h2 className="text-[#eeeeee] text-base lg:text-lg max-w-2xl mx-auto">
             You can reach out to me via these chanels ...
@@ -93,6 +95,19 @@ export const HireMeSection = (): JSX.Element => {
             ))}
           </div>
         </motion.div>
+
+        <div className="flex items-center gap-4 lg:gap-6 justify-center mb-8 lg:mb-13">
+          <a
+            href="https://wa.me/+2348153661574"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-10 h-10 lg:w-12 lg:h-12 bg-color-2 rounded-full flex items-center justify-center hover:bg-color-3 transition-colors"
+          >
+            <FontAwesomeIcon icon={faWhatsapp} />
+          </a>
+
+          <span className="text-[#eeeeee]">+234 815 366 1574 </span>
+        </div>
 
         <motion.div style={{ opacity, y }} className="max-w-2xl mx-auto">
           <form
