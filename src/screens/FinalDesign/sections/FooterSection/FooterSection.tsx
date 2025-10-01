@@ -79,7 +79,7 @@ export const FooterSection = (): JSX.Element => {
         </nav>
 
         {/* Social media icons */}
-        <div className="flex items-center gap-4 lg:gap-6 mt-4 lg:mt-5">
+        {/* <div className="flex items-center gap-4 lg:gap-6 mt-4 lg:mt-5">
           {socialLinks.map((social, index) => (
             <Button
               key={index}
@@ -93,7 +93,7 @@ export const FooterSection = (): JSX.Element => {
               </a>
             </Button>
           ))}
-        </div>
+        </div> */}
       </div>
 
       {/* Terms and Privacy */}

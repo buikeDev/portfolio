@@ -2,6 +2,16 @@ import { Button } from "../../../../components/ui/button";
 import { Card, CardContent } from "../../../../components/ui/card";
 import { Input } from "../../../../components/ui/input";
 import { Textarea } from "../../../../components/ui/textarea";
+import {
+  ArrowLeft,
+  Facebook,
+  Instagram,
+  Twitter,
+  Youtube,
+  Linkedin,
+} from "lucide-react";
+import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export const ContactFormSection = (): JSX.Element => {
   // Form field data for mapping
@@ -13,6 +23,31 @@ export const ContactFormSection = (): JSX.Element => {
       label: "Your Message",
       placeholder: "Message",
       type: "textarea",
+    },
+  ];
+
+  const socialLinks = [
+    {
+      icon: <Facebook className="w-5 h-5 lg:w-6 lg:h-6" />,
+      label: "Facebook",
+      url: "https://www.facebook.com/ago.bkem?mibextid=wwXIfr&mibextid=wwXIfr",
+    },
+    {
+      icon: <Twitter className="w-5 h-5 lg:w-6 lg:h-6" />,
+      label: "Twitter",
+      url: "https://x.com/bkem_der_brainy?s=21",
+    },
+    {
+      icon: <Linkedin className="w-5 h-5 lg:w-6 lg:h-6" />,
+      label: "Linkedin",
+      url: "https://linkedin.com/in/ago-chukwubuikem-aa84a1305",
+    },
+    {
+      icon: (
+        <FontAwesomeIcon icon={faWhatsapp} className="w-5 h-5 lg:w-6 lg:h-6" />
+      ),
+      label: "WhatsApp",
+      url: "https://wa.me/+2348153661574",
     },
   ];
 
@@ -106,6 +141,21 @@ export const ContactFormSection = (): JSX.Element => {
             </form>
           </CardContent>
         </Card>
+      </div>
+
+      <div className="flex items-center gap-4 lg:gap-6 mt-4 lg:mt-5 justify-center">
+        {socialLinks.map((social, index) => (
+          <a
+            key={index}
+            href={social.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-10 h-10 lg:w-12 lg:h-12 bg-color-2 rounded-full flex items-center justify-center hover:bg-color-3 transition-colors"
+          >
+            {social.icon}
+            <span className="sr-only">{social.label}</span>
+          </a>
+        ))}
       </div>
 
       {/* Decorative elements - hidden on mobile */}

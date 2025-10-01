@@ -2,14 +2,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "../../../../components/ui/button";
-import {
-  ArrowLeft,
-  Facebook,
-  Instagram,
-  Twitter,
-  Youtube,
-  Linkedin,
-} from "lucide-react";
+import { ArrowLeft, Facebook, Twitter, Linkedin } from "lucide-react";
 import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
