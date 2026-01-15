@@ -39,7 +39,7 @@ export default function TechMarquee() {
         dragElastic={0.1}
         dragMomentum={true}
         onDragEnd={(_event: PointerEvent, info: PanInfo) => {
-          setVelocity(info.velocity.x * -0.05);
+          setVelocity(info.velocity.x * -0.5);
         }}
         style={{ x }}
         className="flex gap-12 w-max cursor-grab active:cursor-grabbing"
