@@ -24,11 +24,12 @@ export const HeroSection = (): JSX.Element => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const controls = useAnimation();
 
-  const [currentWord, setCurrentWord] = useState("React, React-Native");
+  const [currentWord, setCurrentWord] = useState("Ago Chukwubuikem Jideofor");
   const words = [
-    "React, React-Native",
-    "TailwindCSS, CSS",
-    "Nextjs Nodejs, JavaScript",
+    "Ago Chukwubuikem Jideofor",
+    "a React, React-Native Developer",
+    "a TailwindCSS, CSS Developer",
+    "a Nextjs Nodejs, JavaScript Developer",
   ];
 
   useEffect(() => {
@@ -57,7 +58,7 @@ export const HeroSection = (): JSX.Element => {
     show: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.8, ease: "easeOut" },
+      transition: { duration: 1.5, ease: "easeOut" },
     },
   };
 
@@ -88,29 +89,26 @@ export const HeroSection = (): JSX.Element => {
   }, [displayText, currentPhraseIndex, isDeleting]);
 
   return (
-    <section className="relative w-full md:min-h-screen min-h-[80vh] bg-color-1 overflow-hidden py-10 lg:py-4">
+    <section className="relative w-full md:min-h-screen min-h-[80vh] bg-color-1 overflow-hidden pt-20 pb-10 lg:py-4">
       <div className="relative h-full">
         {/* Main content */}
         <motion.h1
           initial={{ x: -100, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.5 }}
-          className="font-['Poppins',Helvetica] font-bold text-base sm:text-md md:text-lg lg:text-lg flex-row px-6 mb-2 lg:absolute lg:top-[300px] lg:left-[180px] inline-flex "
+          className="font-['Poppins',Helvetica] font-bold text-base sm:text-[5px] md:text-lg lg:text-lg flex-row px-6 mb-2 lg:absolute lg:top-[300px] lg:left-[180px] inline-flex  "
         >
           {/* {Name } */}
           <span className="text-[#eeeeee]">Hello, i'm</span>
           <span className="text-white">&nbsp;</span>
-          <span className="text-[#00adb5] inline">
-            Ago Chukwubuikem Jideofor
-          </span>
-          <span className="text-white">&nbsp;</span>
-          <span className="text-white"> | </span>
+          <span className="text-[#00adb5] inline"></span>
+
           <motion.div
             ref={ref}
             variants={container}
             initial="hidden"
             animate={controls}
-            className="items-center inline px-3 text-center text-black "
+            className="items-center inline ml-2 text-center lg:text-left"
           >
             {/* Heading (Animated Words) */}
             <motion.h1
@@ -160,7 +158,7 @@ export const HeroSection = (): JSX.Element => {
             initial={{ y: 50, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.7 }}
-            className="flex flex-col items-center gap-4 sm:flex-row lg:gap-6"
+            className="flex flex-col items-center w-full gap-4 sm:flex-row sm:justify-center sm:items-center lg:gap-6"
           >
             <motion.div
               animate={{
