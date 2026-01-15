@@ -27,9 +27,11 @@ export const HeroSection = (): JSX.Element => {
   const [currentWord, setCurrentWord] = useState("Ago Chukwubuikem Jideofor");
   const words = [
     "Ago Chukwubuikem Jideofor",
-    "a React, React-Native Developer",
+    "a React Developer",
+    "React-Native Developer",
+    "JavaScript Developer",
     "a TailwindCSS, CSS Developer",
-    "a Nextjs Nodejs, JavaScript Developer",
+    "a Nextjs, Nodejs Developer",
   ];
 
   useEffect(() => {
@@ -108,7 +110,7 @@ export const HeroSection = (): JSX.Element => {
             variants={container}
             initial="hidden"
             animate={controls}
-            className="items-center inline ml-2 text-center lg:text-left"
+            className="items-center inline text-center lg:text-left"
           >
             {/* Heading (Animated Words) */}
             <motion.h1
@@ -120,6 +122,7 @@ export const HeroSection = (): JSX.Element => {
               exit={{ opacity: 0, y: -30 }}
               transition={{ duration: 0.6, ease: "easeInOut" }}
             >
+              {" "}
               {currentWord}
             </motion.h1>
           </motion.div>
