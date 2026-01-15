@@ -1,33 +1,166 @@
 import { DownloadIcon } from "lucide-react";
-import { motion } from "framer-motion";
+import {
+  AnimatePresence,
+  motion,
+  useAnimation,
+  useInView,
+} from "framer-motion";
 import { Button } from "../../../../components/ui/button";
 
 import { useNavigate } from "react-router-dom";
+import { useEffect, useRef, useState } from "react";
 
 export const HeroSection = (): JSX.Element => {
   const navigate = useNavigate();
+  const phrases = [
+    "FRONTEND-FOCUSED FULL-STACK DEVELOPER",
+    "I TURN IDEAS INTO PRODUCTION-READY WEB PRODUCTS",
+  ];
+  const [currentPhraseIndex, setCurrentPhraseIndex] = useState(0);
+  const [displayText, setDisplayText] = useState("");
+  const ref = useRef(null);
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const controls = useAnimation();
+
+  const [currentWord, setCurrentWord] = useState("React, React-Native");
+  const words = [
+    "React, React-Native",
+    "TailwindCSS, CSS",
+    "Nextjs Nodejs, JavaScript",
+  ];
+
+  useEffect(() => {
+    if (isInView) controls.start("show");
+  }, [isInView, controls]);
+
+  useEffect(() => {
+    let index = 0;
+    const interval = setInterval(() => {
+      index = (index + 1) % words.length;
+      setCurrentWord(words[index]);
+    }, 2500);
+    return () => clearInterval(interval);
+  }, []);
+
+  const container = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: { staggerChildren: 0.2, delayChildren: 0.1 },
+    },
+  };
+
+  const fadeUp = {
+    hidden: { opacity: 0, y: 40 },
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8, ease: "easeOut" },
+    },
+  };
+
+  useEffect(() => {
+    const currentPhrase = phrases[currentPhraseIndex];
+    let timeout: number;
+
+    if (!isDeleting && displayText.length < currentPhrase.length) {
+      // Typing animation
+      timeout = setTimeout(() => {
+        setDisplayText(currentPhrase.substring(0, displayText.length + 1));
+      }, 100); // Typing speed
+    } else if (!isDeleting && displayText.length === currentPhrase.length) {
+      // Pause at full phrase
+      timeout = setTimeout(() => setIsDeleting(true), 2000);
+    } else if (isDeleting && displayText.length > 0) {
+      // Deleting animation
+      timeout = setTimeout(() => {
+        setDisplayText(currentPhrase.substring(0, displayText.length - 1));
+      }, 50); // Deleting speed
+    } else if (isDeleting && displayText.length === 0) {
+      // Switch to next phrase
+      setIsDeleting(false);
+      setCurrentPhraseIndex((prevIndex) => (prevIndex + 1) % phrases.length);
+    }
+
+    return () => clearTimeout(timeout);
+  }, [displayText, currentPhraseIndex, isDeleting]);
 
   return (
-    <section className="relative w-full md:min-h-screen min-h-[80vh] bg-color-1 overflow-hidden py-20 lg:py-4">
+    <section className="relative w-full md:min-h-screen min-h-[80vh] bg-color-1 overflow-hidden py-10 lg:py-4">
       <div className="relative h-full">
         {/* Main content */}
-        <div className="flex flex-col items-center lg:items-start gap-8 lg:gap-12 px-6 lg:px-0 pt-12 lg:pt-0 lg:absolute lg:top-[334px] lg:left-[180px] text-center lg:text-left">
+        <motion.h1
+          initial={{ x: -100, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.5 }}
+          className="font-['Poppins',Helvetica] font-bold text-base sm:text-md md:text-lg lg:text-lg flex-row px-6 mb-2 lg:absolute lg:top-[300px] lg:left-[180px] inline-flex "
+        >
+          {/* {Name } */}
+          <span className="text-[#eeeeee]">Hello, i'm</span>
+          <span className="text-white">&nbsp;</span>
+          <span className="text-[#00adb5] inline">
+            Ago Chukwubuikem Jideofor
+          </span>
+          <span className="text-white">&nbsp;</span>
+          <span className="text-white"> | </span>
+          <motion.div
+            ref={ref}
+            variants={container}
+            initial="hidden"
+            animate={controls}
+            className="items-center inline px-3 text-center text-black "
+          >
+            {/* Heading (Animated Words) */}
+            <motion.h1
+              variants={fadeUp}
+              key={currentWord}
+              className="text-md md:text-lg lg:text-xl font-bold  text-[#00adb5]"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -30 }}
+              transition={{ duration: 0.6, ease: "easeInOut" }}
+            >
+              {currentWord}
+            </motion.h1>
+          </motion.div>
+        </motion.h1>
+
+        {/* Headline with typewriter effect */}
+        <div className="flex flex-col items-start lg:items-start gap-8 lg:gap-12 px-6 lg:px-0  lg:absolute lg:top-[334px] lg:left-[180px]  lg:text-left">
           <motion.h1
             initial={{ x: -100, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.5 }}
-            className="font-['Poppins',Helvetica] font-bold text-4xl sm:text-5xl md:text-6xl lg:text-8xl leading-tight lg:leading-[96px]"
+            className="font-['Poppins',Helvetica] font-bold text-4xl sm:text-5xl md:text-6xl lg:text-8xl leading-tight lg:leading-[96px] justify-start w-full"
           >
-            <span className="text-[#eeeeee]">CREATIVE WEB</span>
-            <span className="text-white">&nbsp;</span>
-            <span className="text-[#00adb5] block lg:inline">DEVELOPER</span>
+            <AnimatePresence mode="wait">
+              <motion.h1
+                key={currentPhraseIndex}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="font-bold text-[#eeeeee] text-base sm:text-lg md:text-3xl lg:text-5xl mb-4 md:mb-6 z-10 inline-block min-w-[22ch] text-left lg:ml-5"
+              >
+                {displayText}
+                <motion.span
+                  animate={{ opacity: [0, 1, 0] }}
+                  transition={{ repeat: Infinity, duration: 0.8 }}
+                  className="ml-1"
+                >
+                  |
+                </motion.span>
+              </motion.h1>
+            </AnimatePresence>
           </motion.h1>
 
+          {/* Buttons */}
           <motion.div
             initial={{ y: 50, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.7 }}
-            className="flex flex-col sm:flex-row items-center gap-4 lg:gap-6"
+            className="flex flex-col items-center gap-4 sm:flex-row lg:gap-6"
           >
             <motion.div
               animate={{
@@ -41,7 +174,7 @@ export const HeroSection = (): JSX.Element => {
             >
               <Button
                 onClick={() => navigate("/hire-me")}
-                className="px-6 lg:px-8 py-2.5 bg-color-3 rounded-3xl font-['Poppins',Helvetica] font-bold text-[#eeeeee] text-base lg:text-lg shadow-[0px_4px_4px_#00000080] w-full sm:w-auto hover:bg-color-3/90 transition-colors"
+                className="px-6 lg:px-8  bg-color-3 rounded-3xl font-['Poppins',Helvetica] font-bold text-[#eeeeee] text-base lg:text-lg shadow-[0px_4px_4px_#00000080] w-full sm:w-auto hover:bg-color-3/90 transition-colors"
               >
                 Hire me
               </Button>
@@ -133,10 +266,10 @@ export const HeroSection = (): JSX.Element => {
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.9 }}
-          className="lg:hidden absolute bottom-30 left-1/2 transform -translate-x-1/2 w-48 h-48 opacity-30"
+          className="absolute w-48 h-48 transform -translate-x-1/2 lg:hidden bottom-30 left-1/2 opacity-30"
         >
           <img
-            className="w-full h-full object-contain"
+            className="object-contain w-full h-full"
             alt="Designer illustration"
             src="/icons/laptop-guy.png"
           />

@@ -24,8 +24,6 @@ export default function Header() {
     };
   }, []);
 
-  
-
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
@@ -58,7 +56,7 @@ export default function Header() {
           initial={{ y: -100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.5 }}
-          className="flex justify-between items-center w-full px-6 lg:px-24 py-2 lg:py-6"
+          className="flex items-center justify-between w-full px-6 py-2 lg:px-24 lg:py-6"
         >
           <motion.div
             initial={{ scale: 0.5, opacity: 0 }}
@@ -66,10 +64,10 @@ export default function Header() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="font-['Oswald',Helvetica] font-bold text-[#eeeeee] text-xl lg:text-2xl"
           >
-            BuikeDev
+            &lt;BuikeDev/&gt;
           </motion.div>
 
-          <nav className="hidden md:flex items-center gap-8 lg:gap-12">
+          <nav className="items-center hidden gap-8 md:flex lg:gap-12">
             {navItems.map((item, index) => (
               <motion.a
                 key={index}
@@ -107,7 +105,7 @@ export default function Header() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.3 }}
-              className="fixed inset-0 bg-black/20 backdrop-blur-sm z-40 md:hidden"
+              className="fixed inset-0 z-40 bg-black/20 backdrop-blur-sm md:hidden"
               onClick={toggleMenu}
             />
 
