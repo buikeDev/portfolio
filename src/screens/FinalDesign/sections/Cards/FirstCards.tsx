@@ -24,14 +24,27 @@ const projects: ProjectCard[] = [
   },
   {
     href: "#",
-    imageSrc: "/images/bytco.png",
-    altText: "Bytco App Preview",
-    title: "Bytco",
+    imageSrc: "/images/ounje.jpeg",
+    altText: "Ounje Mobile App Preview",
+    title: "Ounje",
     description:
-      "Designed and developed a responsive landing page for a cryptocurrency trading platform using HTML, CSS, and JavaScript. The project highlights key features, market trends, and user benefits through sleek UI design and smooth animations. Optimized for mobile and desktop, it ensures fast load times and cross-browser compatibility—delivering a polished user experience and high engagement.",
-    tech: ["HTML", "CSS", "JavaScript"],
-    codeUrl: "https://github.com/buikeDev/bycto.com",
-    demoUrl: "https://bycto-com.vercel.app/",
+      "Ounje is a modern food ordering and delivery platform built to connect customers with local restaurants through a fast, seamless, and reliable mobile experience. The app features dedicated portals for customers, vendors, and riders, enabling real-time order management, live delivery tracking, secure payments, and efficient logistics coordination.Built with React Native for both Android and iOS, Ounje focuses on performance, scalability, and user experience. Key features include Paystack payment integration, live map tracking, KYC verification for vendors and riders, delivery confirmation tokens, order history, and dynamic menu management. The platform was designed to simplify food delivery operations while creating a smooth and intuitive experience for every user involved in the ecosystem.",
+    tech: [
+      "React Native",
+      "Expo",
+      "Node.js",
+      "Express.js",
+      "MongoDB",
+      "JWT Authentication",
+      "Paystack",
+      "Google Maps API",
+      "Live Location Tracking",
+      "Git",
+      "GitHub",
+      "EAS Build",
+    ],
+    codeUrl: "https://github.com/buikeDev/ounje",
+    demoUrl: "https://apps.apple.com/ng/app/ounjefood/id6762204959/",
   },
   {
     href: "#",
@@ -50,7 +63,7 @@ const projects: ProjectCard[] = [
 
 export default function FirstCards() {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full max-w-6xl mx-auto">
+    <div className="grid w-full max-w-6xl grid-cols-1 gap-8 mx-auto md:grid-cols-2 lg:grid-cols-3">
       {projects.map((project, index) => (
         <div
           key={index}
@@ -60,12 +73,12 @@ export default function FirstCards() {
           <img
             src={project.imageSrc}
             alt={project.altText}
-            className="w-full h-48 object-cover rounded-t-2xl"
+            className="object-cover w-full h-48 rounded-t-2xl"
           />
 
           {/* Content */}
           <div className="flex flex-col flex-1 p-6">
-            <h3 className="text-white text-xl font-bold mb-2">
+            <h3 className="mb-2 text-xl font-bold text-white">
               {project.title}
             </h3>
             <p className="text-[#cfd8dc] text-sm mb-4">{project.description}</p>
