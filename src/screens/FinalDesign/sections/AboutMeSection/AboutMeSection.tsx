@@ -8,7 +8,7 @@ export const AboutMeSection = (): JSX.Element => {
 
   const fullText = `Hi there! 👋 I'm Ago Chukwubuikem Jideofor, a passionate Full Stack Web Developer with expertise in building modern, scalable, and user-friendly web applications. I thrive on turning ideas into functional and visually appealing digital experiences.
 
-With a strong foundation in HTML, CSS, and JavaScript, I specialize in frontend development using React.js and Next.js, ensuring fast, responsive, and SEO-friendly applications. On the backend, I work with technologies like Node.js, Express, and databases (SQL & NoSQL) to create seamless full-stack solutions.
+With a strong foundation in HTML, CSS, and JavaScript, I specialize in frontend development using React.js and Next.js and React-Native, ensuring fast, responsive, and SEO-friendly applications. On the backend, I work with technologies like Node.js, Express, and databases (SQL & NoSQL) to create seamless full-stack solutions.
 
 I'm dedicated to writing clean, efficient code while staying updated with the latest industry trends. Whether it's crafting intuitive UIs or optimizing server performance, I love solving problems and delivering high-quality results.
 
@@ -39,7 +39,7 @@ Let's build something amazing together`;
   return (
     <section
       id="about"
-      className="relative w-full min-h-screen lg:h-[1024px] bg-color-1 py-16 lg:py-0"
+      className="relative w-full min-h-screen lg:h-[1024px] bg-color-1  lg:py-0"
     >
       <div className="relative h-full w-full max-w-[1440px] mx-auto">
         {/* About me content */}
@@ -125,16 +125,16 @@ Let's build something amazing together`;
                   whileInView={{ scale: 1, opacity: 1 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.8, delay: 0.6 }}
-                  className="lg:hidden absolute inset-0 flex items-center justify-center"
+                  className="absolute inset-0 flex items-center justify-center lg:hidden"
                 >
                   <div className="relative w-48 h-48">
                     <img
-                      className="absolute w-full h-full object-contain opacity-80"
+                      className="absolute object-contain w-full h-full opacity-80"
                       alt="Developer illustration"
                       src="/icons/lazy-coder.png"
                     />
                     <img
-                      className="absolute w-16 h-16 top-4 right-4 object-contain"
+                      className="absolute object-contain w-16 h-16 top-4 right-4"
                       alt="Code"
                       src="/lightbulb-2.png"
                     />
