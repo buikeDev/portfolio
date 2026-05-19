@@ -8,6 +8,8 @@ interface ProjectCard {
   tech: string[];
   codeUrl: string;
   demoUrl: string;
+  codeAvailable?: boolean;
+  codeUnavailableMessage?: string;
 }
 
 const projects: ProjectCard[] = [
@@ -26,7 +28,7 @@ const projects: ProjectCard[] = [
     href: "#",
     imageSrc: "/images/ounje.jpeg",
     altText: "Ounje Mobile App Preview",
-    title: "Ounje",
+    title: "OunjeFood Mobile App",
     description:
       "Ounje is a modern food ordering and delivery platform built to connect customers with local restaurants through a fast, seamless, and reliable mobile experience. The app features dedicated portals for customers, vendors, and riders, enabling real-time order management, live delivery tracking, secure payments, and efficient logistics coordination.Built with React Native for both Android and iOS, Ounje focuses on performance, scalability, and user experience. Key features include Paystack payment integration, live map tracking, KYC verification for vendors and riders, delivery confirmation tokens, order history, and dynamic menu management. The platform was designed to simplify food delivery operations while creating a smooth and intuitive experience for every user involved in the ecosystem.",
     tech: [
@@ -45,6 +47,9 @@ const projects: ProjectCard[] = [
     ],
     codeUrl: "https://github.com/buikeDev/ounje",
     demoUrl: "https://apps.apple.com/ng/app/ounjefood/id6762204959/",
+    codeAvailable: false,
+    codeUnavailableMessage:
+      "This repo is private/company-owned and not available publicly.",
   },
   {
     href: "#",
@@ -61,7 +66,11 @@ const projects: ProjectCard[] = [
   // Add more projects as needed
 ];
 
+import { useState } from "react";
+
 export default function FirstCards() {
+  const [clickedUnavailableIndex, setClickedUnavailableIndex] = useState<number | null>(null);
+
   return (
     <div className="grid w-full max-w-6xl grid-cols-1 gap-8 mx-auto md:grid-cols-2 lg:grid-cols-3">
       {projects.map((project, index) => (
@@ -95,14 +104,40 @@ export default function FirstCards() {
             </div>
             {/* Buttons */}
             <div className="flex gap-3 mt-auto">
-              <a
-                href={project.codeUrl}
-                className="flex-1 border border-[#00adb5] text-[#00adb5] rounded-lg py-2 text-center font-semibold hover:bg-[#00adb5] hover:text-white transition-colors"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Code
-              </a>
+              {project.codeAvailable === false ? (
+                <div className="relative group flex-1">
+                  <button
+                    type="button"
+                    className="w-full border border-[#39626f] bg-[#1b2a35] text-[#7aa2ab] rounded-lg py-2 text-center font-semibold cursor-not-allowed transition-colors"
+                    title={project.codeUnavailableMessage}
+                    aria-label={project.codeUnavailableMessage}
+                    onClick={() =>
+                      setClickedUnavailableIndex(
+                        clickedUnavailableIndex === index ? null : index,
+                      )
+                    }
+                  >
+                    Code
+                  </button>
+                  <span className="pointer-events-none absolute left-1/2 top-0 -translate-x-1/2 -translate-y-full rounded-md bg-[#111827] px-3 py-2 text-xs text-[#cfd8dc] shadow-lg shadow-black/40 opacity-0 transition-opacity duration-200 group-hover:opacity-100">
+                    {project.codeUnavailableMessage}
+                  </span>
+                  {clickedUnavailableIndex === index ? (
+                    <div className="mt-3 rounded-lg border border-[#00adb5] bg-[#111827] px-3 py-2 text-xs text-[#cfd8dc] shadow-lg">
+                      {project.codeUnavailableMessage}
+                    </div>
+                  ) : null}
+                </div>
+              ) : (
+                <a
+                  href={project.codeUrl}
+                  className="flex-1 border border-[#00adb5] text-[#00adb5] rounded-lg py-2 text-center font-semibold hover:bg-[#00adb5] hover:text-white transition-colors"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Code
+                </a>
+              )}
               <a
                 href={project.demoUrl}
                 className="flex-1 bg-[#00adb5] text-white rounded-lg py-2 text-center font-semibold hover:bg-[#019ca1] transition-colors"
