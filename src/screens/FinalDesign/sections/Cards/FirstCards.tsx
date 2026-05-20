@@ -53,14 +53,17 @@ const projects: ProjectCard[] = [
   },
   {
     href: "#",
-    imageSrc: "/images/beekeys.png",
-    altText: "beekeys App Preview",
-    title: "beekeys",
+    imageSrc: "/images/ounjeLanding.png",
+    altText: "Ounje Landing Page Preview",
+    title: "Ounje Landing Page",
     description:
-      "A sleek, responsive landing page designed to introduce a trust-driven platform for discovering and connecting with local businesses. The page highlights core services (business owners, contributors, registrars) and key value propositions like transparency, community feedback, and local visibility.",
-    tech: ["HTML", "CSS", "Typescricpt", "React"],
-    codeUrl: "https://github.com/buikeDev/beekeys",
-    demoUrl: "https://beekeys-nine.vercel.app",
+      "Designed and developed a modern, conversion-focused landing page for Ounje, a food ordering and delivery platform built to connect customers with local restaurants and delivery riders. The platform was crafted to provide a seamless user experience across mobile and web, with a strong focus on performance, accessibility, and responsive design. The landing page highlights core platform features including real-time order tracking, vendor onboarding, rider integration, secure payments, and multi-role access for customers, vendors, and delivery agents. Built with a clean UI and smooth interactions to drive engagement and improve user conversion.",
+    tech: ["Tailwind CSS", "TypeScript", "React"],
+    codeUrl: "https://github.com/buikeDev/ounjeLanding",
+    demoUrl: "https://ounjefood.com",
+    codeAvailable: false,
+    codeUnavailableMessage:
+      "This repo is private/company-owned and not available publicly.",
   },
 
   // Add more projects as needed
@@ -69,7 +72,9 @@ const projects: ProjectCard[] = [
 import { useState } from "react";
 
 export default function FirstCards() {
-  const [clickedUnavailableIndex, setClickedUnavailableIndex] = useState<number | null>(null);
+  const [clickedUnavailableIndex, setClickedUnavailableIndex] = useState<
+    number | null
+  >(null);
 
   return (
     <div className="grid w-full max-w-6xl grid-cols-1 gap-8 mx-auto md:grid-cols-2 lg:grid-cols-3">
@@ -105,7 +110,7 @@ export default function FirstCards() {
             {/* Buttons */}
             <div className="flex gap-3 mt-auto">
               {project.codeAvailable === false ? (
-                <div className="relative group flex-1">
+                <div className="relative flex-1 group">
                   <button
                     type="button"
                     className="w-full border border-[#39626f] bg-[#1b2a35] text-[#7aa2ab] rounded-lg py-2 text-center font-semibold cursor-not-allowed transition-colors"

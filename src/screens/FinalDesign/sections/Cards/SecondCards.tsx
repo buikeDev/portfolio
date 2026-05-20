@@ -13,14 +13,14 @@ interface ProjectCard {
 const projects: ProjectCard[] = [
   {
     href: "#",
-    imageSrc: "/images/Mentorshipreq.png",
-    altText: "Mentorship Request Dashboard Preview",
-    title: "Mentorship Request Dashboard",
+    imageSrc: "/images/beekeys.png",
+    altText: "beekeys App Preview",
+    title: "beekeys",
     description:
-      "A feature-rich admin panel built with React, Next.js, and Tailwind CSS that streamlines the tracking and management of mentorship requests within a job search platform. This dashboard allows admins to efficiently monitor user-mentor engagement, manage request statuses, and ensure smooth mentorship workflows. Designed with a responsive and intuitive UI, the system promotes better decision-making and user support through clear data visualization and seamless UX.",
-    tech: ["React", "Next.js", "TypeScript", "Tailwind CSS"],
-    codeUrl: "#",
-    demoUrl: "https://mentor-match-admin-plan.vercel.app/",
+      "A sleek, responsive landing page designed to introduce a trust-driven platform for discovering and connecting with local businesses. The page highlights core services (business owners, contributors, registrars) and key value propositions like transparency, community feedback, and local visibility.",
+    tech: ["HTML", "CSS", "Typescricpt", "React"],
+    codeUrl: "https://github.com/buikeDev/beekeys",
+    demoUrl: "https://beekeys-nine.vercel.app",
   },
   {
     href: "#",
@@ -50,7 +50,7 @@ const projects: ProjectCard[] = [
 
 export default function SecondCards() {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full max-w-6xl mx-auto">
+    <div className="grid w-full max-w-6xl grid-cols-1 gap-8 mx-auto md:grid-cols-2 lg:grid-cols-3">
       {projects.map((project, index) => (
         <div
           key={index}
@@ -60,12 +60,12 @@ export default function SecondCards() {
           <img
             src={project.imageSrc}
             alt={project.altText}
-            className="w-full h-48 object-cover rounded-t-2xl"
+            className="object-cover w-full h-48 rounded-t-2xl"
           />
 
           {/* Content */}
           <div className="flex flex-col flex-1 p-6">
-            <h3 className="text-white text-xl font-bold mb-2">
+            <h3 className="mb-2 text-xl font-bold text-white">
               {project.title}
             </h3>
             <p className="text-[#cfd8dc] text-sm mb-4">{project.description}</p>
