@@ -39,7 +39,7 @@ Let's build something amazing together`;
   return (
     <section
       id="about"
-      className="relative w-full min-h-screen lg:h-[1024px] bg-color-1  lg:py-0"
+      className="relative w-full min-h-screen lg:h-[1024px] bg-background  lg:py-0"
     >
       <div className="relative h-full w-full max-w-[1440px] mx-auto">
         {/* About me content */}
@@ -61,13 +61,13 @@ Let's build something amazing together`;
               transition={{ duration: 0.8, delay: 0.2 }}
               className="font-['Poppins',Helvetica] font-bold text-4xl sm:text-5xl lg:text-[64px] tracking-[0] leading-tight lg:leading-normal"
             >
-              <span className="text-[#eeeeee]">About</span>
+              <span className="text-foreground">About</span>
               <span className="text-white">&nbsp;</span>
-              <span className="text-[#00adb5]">me</span>
+              <span className="text-primary">me</span>
             </motion.h2>
             <div>
               {paragraphs.map((para, idx) => (
-                <p key={idx} className="mb-4 text-base text-[#eeeeee]">
+                <p key={idx} className="mb-4 text-base text-foreground">
                   {para}
                 </p>
               ))}

@@ -13,8 +13,8 @@ export const FinalDesign = (): JSX.Element => {
         <Header />
         <HeroSection />
         <TechMarquee />
-        <AboutMeSection />
         <ProjectsSection />
+        <AboutMeSection />
         <ContactFormSection />
         <FooterSection />
       </div>

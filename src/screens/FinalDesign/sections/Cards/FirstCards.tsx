@@ -60,7 +60,7 @@ const projects: ProjectCard[] = [
       "Designed and developed a modern, conversion-focused landing page for Ounje, a food ordering and delivery platform built to connect customers with local restaurants and delivery riders. The platform was crafted to provide a seamless user experience across mobile and web, with a strong focus on performance, accessibility, and responsive design. The landing page highlights core platform features including real-time order tracking, vendor onboarding, rider integration, secure payments, and multi-role access for customers, vendors, and delivery agents. Built with a clean UI and smooth interactions to drive engagement and improve user conversion.",
     tech: ["Tailwind CSS", "TypeScript", "React"],
     codeUrl: "https://github.com/buikeDev/ounjeLanding",
-    demoUrl: "https://ounjefood.com",
+    demoUrl: "https://ounje-landingpage-nine.vercel.app/",
     codeAvailable: false,
     codeUnavailableMessage:
       "This repo is private/company-owned and not available publicly.",
