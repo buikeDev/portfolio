@@ -19,7 +19,7 @@ import {
   Sparkles,
   X,
 } from "lucide-react";
-import { motion, useReducedMotion } from "framer-motion";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { useContactForm } from "../../hooks/useContactForm";
 import { projects } from "./sections/ProjectsSection/projects";
@@ -110,6 +110,7 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
 }
 
 export const FinalDesign = (): JSX.Element => {
+  const [isLoading, setIsLoading] = useState(true);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [featuredIndex, setFeaturedIndex] = useState(0);
   const [isCarouselPaused, setIsCarouselPaused] = useState(false);
@@ -128,6 +129,31 @@ export const FinalDesign = (): JSX.Element => {
           viewport: { once: true, amount: 0.18 },
           transition: { duration: 0.65, delay, ease: "easeOut" },
         };
+
+  useEffect(() => {
+    if (!isLoading) return;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const minimumDuration = shouldReduceMotion ? 150 : 1_550;
+    let timer: number | undefined;
+
+    const finishLoading = () => {
+      timer = window.setTimeout(() => setIsLoading(false), minimumDuration);
+    };
+
+    if (document.readyState === "complete") {
+      finishLoading();
+    } else {
+      window.addEventListener("load", finishLoading, { once: true });
+    }
+
+    return () => {
+      if (timer) window.clearTimeout(timer);
+      window.removeEventListener("load", finishLoading);
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [isLoading, shouldReduceMotion]);
 
   useEffect(() => {
     if (!isMenuOpen) return;
@@ -169,6 +195,47 @@ export const FinalDesign = (): JSX.Element => {
 
   return (
     <main id="home" className="portfolio-shell">
+      <AnimatePresence>
+        {isLoading && (
+          <motion.div
+            className="loading-screen"
+            initial={{ opacity: 1 }}
+            exit={{ opacity: 0, y: "-4%" }}
+            transition={{
+              duration: shouldReduceMotion ? 0.1 : 0.55,
+              ease: "easeInOut",
+            }}
+            role="status"
+            aria-live="polite"
+            aria-label="Loading BuikeDev portfolio"
+          >
+            <div className="loading-grid" />
+            <div className="loading-glow" />
+            <motion.div
+              className="loading-content"
+              initial={shouldReduceMotion ? false : { opacity: 0, scale: 0.94 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5, ease: "easeOut" }}
+            >
+              <div className="loading-mark" aria-hidden="true">
+                <span>&lt;</span>
+                <strong>BuikeDev</strong>
+                <span>/&gt;</span>
+              </div>
+              <p>Building digital experiences</p>
+              <div className="loading-track" aria-hidden="true">
+                <span />
+              </div>
+              <div className="loading-meta" aria-hidden="true">
+                <span>React</span>
+                <span>Product engineering</span>
+                <span>2026</span>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       <header className="site-header">
         <div className="site-container header-inner">
           <a href="#home" className="brand" aria-label="BuikeDev home">
@@ -531,7 +598,7 @@ export const FinalDesign = (): JSX.Element => {
                 <span>Projects shipped</span>
               </div>
               <div>
-                <strong>2+</strong>
+                <strong>3+</strong>
                 <span>Years building</span>
               </div>
               <div>
