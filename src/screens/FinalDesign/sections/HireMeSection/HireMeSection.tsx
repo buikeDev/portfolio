@@ -1,12 +1,20 @@
-import { motion, useScroll, useTransform } from "framer-motion";
+import {
+  motion,
+  useReducedMotion,
+  useScroll,
+  useTransform,
+} from "framer-motion";
 import { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "../../../../components/ui/button";
 import { ArrowLeft, Facebook, Twitter, Linkedin } from "lucide-react";
 import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useContactForm } from "../../../../hooks/useContactForm";
 
 export const HireMeSection = (): JSX.Element => {
+  const shouldReduceMotion = useReducedMotion();
+  const { status, submitForm, isSubmitting } = useContactForm();
   // Social media links data
   const socialLinks = [
     {
@@ -54,7 +62,7 @@ export const HireMeSection = (): JSX.Element => {
         <motion.div></motion.div>
 
         <motion.div
-          style={{ opacity, y }}
+          style={shouldReduceMotion ? undefined : { opacity, y }}
           className="text-center mb-12 lg:mb-16"
         >
           <h2 className="text-[#eeeeee] text-3xl lg:text-4xl font-bold mb-4">
@@ -67,16 +75,16 @@ export const HireMeSection = (): JSX.Element => {
         </motion.div>
 
         <motion.div
-          style={{ opacity, y }}
+          style={shouldReduceMotion ? undefined : { opacity, y }}
           className="text-center mb-8 lg:mb-13"
         >
           <h2 className="text-[#eeeeee] text-base lg:text-lg max-w-2xl mx-auto">
-            You can reach out to me via these chanels ...
+            You can reach me through any of these channels.
           </h2>
           <div className="flex items-center gap-4 lg:gap-6 mt-4 lg:mt-5 justify-center">
-            {socialLinks.map((social, index) => (
+            {socialLinks.map((social) => (
               <a
-                key={index}
+                key={social.label}
                 href={social.url}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -94,6 +102,7 @@ export const HireMeSection = (): JSX.Element => {
             href="https://wa.me/+2348153661574"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="Contact me on WhatsApp"
             className="w-10 h-10 lg:w-12 lg:h-12 bg-color-2 rounded-full flex items-center justify-center hover:bg-color-3 transition-colors"
           >
             <FontAwesomeIcon icon={faWhatsapp} />
@@ -102,10 +111,15 @@ export const HireMeSection = (): JSX.Element => {
           <span className="text-[#eeeeee]">+234 815 366 1574 </span>
         </div>
 
-        <motion.div style={{ opacity, y }} className="max-w-2xl mx-auto">
+        <motion.div
+          style={shouldReduceMotion ? undefined : { opacity, y }}
+          className="max-w-2xl mx-auto"
+        >
           <form
             action="https://formspree.io/f/xwpborjn"
             method="POST"
+            onSubmit={submitForm}
+            aria-busy={isSubmitting}
             className="space-y-6"
           >
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -115,7 +129,10 @@ export const HireMeSection = (): JSX.Element => {
                 </label>
                 <input
                   type="text"
+                  name="name"
                   id="name"
+                  autoComplete="name"
+                  required
                   className="w-full px-4 py-2 rounded-lg bg-[#393e4680] text-[#eeeeee] border border-[#393e46] focus:outline-none focus:border-[#00adb5]"
                   placeholder="Your name"
                 />
@@ -126,7 +143,10 @@ export const HireMeSection = (): JSX.Element => {
                 </label>
                 <input
                   type="email"
+                  name="email"
                   id="email"
+                  autoComplete="email"
+                  required
                   className="w-full px-4 py-2 rounded-lg bg-[#393e4680] text-[#eeeeee] border border-[#393e46] focus:outline-none focus:border-[#00adb5]"
                   placeholder="Your email"
                 />
@@ -140,6 +160,7 @@ export const HireMeSection = (): JSX.Element => {
                 type="text"
                 name="subject"
                 id="subject"
+                required
                 className="w-full px-4 py-2 rounded-lg bg-[#393e4680] text-[#eeeeee] border border-[#393e46] focus:outline-none focus:border-[#00adb5]"
                 placeholder="What's this about?"
               />
@@ -152,16 +173,30 @@ export const HireMeSection = (): JSX.Element => {
                 name="message"
                 id="message"
                 rows={6}
+                required
                 className="w-full px-4 py-2 rounded-lg bg-[#393e4680] text-[#eeeeee] border border-[#393e46] focus:outline-none focus:border-[#00adb5]"
                 placeholder="Your message"
               ></textarea>
             </div>
             <button
               type="submit"
+              disabled={isSubmitting}
               className="w-full bg-[#00adb5] text-white py-3 px-6 rounded-lg font-bold hover:bg-[#00adb5]/90 transition-colors"
             >
-              Send Message
+              {isSubmitting ? "Sending..." : "Send Message"}
             </button>
+            <div aria-live="polite" role="status" className="min-h-6">
+              {status === "success" && (
+                <p className="text-sm text-emerald-400">
+                  Thanks! Your message has been sent successfully.
+                </p>
+              )}
+              {status === "error" && (
+                <p className="text-sm text-red-400">
+                  Your message could not be sent. Please try again.
+                </p>
+              )}
+            </div>
           </form>
         </motion.div>
       </div>

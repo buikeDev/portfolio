@@ -1,20 +1,24 @@
 import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import {
+  motion,
+  useReducedMotion,
+  useScroll,
+  useTransform,
+} from "framer-motion";
 // import { Button } from "../../../../components/ui/button";
 
 export const AboutMeSection = (): JSX.Element => {
+  const shouldReduceMotion = useReducedMotion();
   // Data for the floating tech elements - simplified for mobile
   // const [isExpanded, setIsExpanded] = useState(false);
 
-  const fullText = `Hi there! 👋 I'm Ago Chukwubuikem Jideofor, a passionate Full Stack Web Developer with expertise in building modern, scalable, and user-friendly web applications. I thrive on turning ideas into functional and visually appealing digital experiences.
+  const fullText = `I'm Ago Chukwubuikem Jideofor, a frontend-focused full-stack developer who turns product ideas into reliable web and mobile experiences.
 
-With a strong foundation in HTML, CSS, and JavaScript, I specialize in frontend development using React.js and Next.js and React-Native, ensuring fast, responsive, and SEO-friendly applications. On the backend, I work with technologies like Node.js, Express, and databases (SQL & NoSQL) to create seamless full-stack solutions.
+I build responsive interfaces with React, Next.js, TypeScript, and React Native, supported by Node.js services and SQL or NoSQL databases when a product needs a backend. I care about clear interaction design, accessible interfaces, performance, and code that remains easy for a team to maintain.
 
-I'm dedicated to writing clean, efficient code while staying updated with the latest industry trends. Whether it's crafting intuitive UIs or optimizing server performance, I love solving problems and delivering high-quality results.
+My approach starts with understanding the user and business goal, then choosing the simplest architecture that can grow with the product. I enjoy collaborating with teams, working through difficult implementation details, and shipping polished features instead of stopping at a prototype.
 
-When I'm not coding, you'll find me exploring new tech, contributing to open-source projects, or sharing knowledge with the developer community.
-
-Let's build something amazing together`;
+I'm available for product development, frontend engineering, and full-stack projects.`;
 
   // Function to truncate text to 30 words
   // const truncateText = (text: string, wordCount: number) => {
@@ -46,7 +50,7 @@ Let's build something amazing together`;
         <div className="flex flex-col lg:flex-row items-center lg:items-start justify-between px-6 lg:px-24 pt-8 lg:pt-[255px] gap-12 lg:gap-0">
           {/* Left side - Text content */}
           <motion.div
-            style={{ opacity, y }}
+            style={shouldReduceMotion ? undefined : { opacity, y }}
             initial={{ x: -100, opacity: 0 }}
             whileInView={{ x: 0, opacity: 1 }}
             viewport={{ once: true }}
@@ -54,7 +58,7 @@ Let's build something amazing together`;
             className="flex flex-col max-w-full lg:max-w-[550px] text-center lg:text-left"
           >
             <motion.h2
-              style={{ opacity, y }}
+              style={shouldReduceMotion ? undefined : { opacity, y }}
               initial={{ y: 20, opacity: 0 }}
               whileInView={{ y: 0, opacity: 1 }}
               viewport={{ once: true }}
@@ -75,7 +79,7 @@ Let's build something amazing together`;
 
             {/* Vector below text - hidden on mobile */}
             <motion.img
-              style={{ opacity, y }}
+              style={shouldReduceMotion ? undefined : { opacity, y }}
               initial={{ y: 50, opacity: 0 }}
               whileInView={{ y: 0, opacity: 1 }}
               viewport={{ once: true }}
@@ -88,7 +92,7 @@ Let's build something amazing together`;
 
           {/* Right side - Illustration - simplified for mobile */}
           <motion.div
-            style={{ opacity, y }}
+            style={shouldReduceMotion ? undefined : { opacity, y }}
             initial={{ x: 100, opacity: 0 }}
             whileInView={{ x: 0, opacity: 1 }}
             viewport={{ once: true }}
@@ -109,7 +113,7 @@ Let's build something amazing together`;
               <div className="relative w-full lg:w-[661px] h-[300px] lg:h-[564px] top-[5px] left-[3px]">
                 {/* Floating elements - only show on desktop */}
                 <motion.img
-                  style={{ opacity, y }}
+                  style={shouldReduceMotion ? undefined : { opacity, y }}
                   initial={{ scale: 0.8, opacity: 0 }}
                   whileInView={{ scale: 1, opacity: 1 }}
                   viewport={{ once: true }}
@@ -120,7 +124,7 @@ Let's build something amazing together`;
 
                 {/* Simplified mobile illustration */}
                 <motion.div
-                  style={{ opacity, y }}
+                  style={shouldReduceMotion ? undefined : { opacity, y }}
                   initial={{ scale: 0.8, opacity: 0 }}
                   whileInView={{ scale: 1, opacity: 1 }}
                   viewport={{ once: true }}
@@ -148,7 +152,7 @@ Let's build something amazing together`;
 
             {/* Character illustration - simplified for mobile */}
             <motion.div
-              style={{ opacity, y }}
+              style={shouldReduceMotion ? undefined : { opacity, y }}
               initial={{ scale: 0.8, opacity: 0 }}
               whileInView={{ scale: 1, opacity: 1 }}
               viewport={{ once: true }}

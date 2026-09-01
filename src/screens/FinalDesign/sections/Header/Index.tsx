@@ -1,13 +1,19 @@
-"use client";
-
-import { useState, useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 import { Menu, X } from "lucide-react";
 
+const navItems = [
+  { label: "Home", href: "#home", sectionId: "home" },
+  { label: "About Me", href: "#about", sectionId: "about" },
+  { label: "Contact", href: "#contact", sectionId: "contact" },
+];
+
 export default function Header() {
   const [isScroll, setIsScroll] = useState<boolean>(false);
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,8 +30,28 @@ export default function Header() {
     };
   }, []);
 
+  useEffect(() => {
+    if (!isMenuOpen) return;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    closeButtonRef.current?.focus();
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setIsMenuOpen(false);
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      document.removeEventListener("keydown", handleKeyDown);
+      menuButtonRef.current?.focus();
+    };
+  }, [isMenuOpen]);
+
   const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
+    setIsMenuOpen((isOpen) => !isOpen);
   };
 
   const scrollToSection = (sectionId: string) => {
@@ -35,13 +61,6 @@ export default function Header() {
       setIsMenuOpen(false);
     }
   };
-
-  // Navigation items
-  const navItems = [
-    { label: "Home", href: "#" },
-    { label: "About Me", href: "#about" },
-    { label: "Contact", href: "#contact" },
-  ];
 
   return (
     <section>
@@ -70,7 +89,7 @@ export default function Header() {
           <nav className="items-center hidden gap-8 md:flex lg:gap-12">
             {navItems.map((item, index) => (
               <motion.a
-                key={index}
+                key={item.sectionId}
                 href={item.href}
                 initial={{ y: -20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
@@ -84,7 +103,12 @@ export default function Header() {
 
           {/* Mobile menu button */}
           <motion.button
+            ref={menuButtonRef}
             onClick={toggleMenu}
+            type="button"
+            aria-label="Open navigation menu"
+            aria-expanded={isMenuOpen}
+            aria-controls="mobile-navigation"
             initial={{ scale: 0.5, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.4 }}
@@ -111,17 +135,24 @@ export default function Header() {
 
             {/* Menu Panel */}
             <motion.div
+              id="mobile-navigation"
+              role="dialog"
+              aria-modal="true"
+              aria-label="Navigation menu"
               initial={{ opacity: 0, x: "100%" }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: "100%" }}
               transition={{ duration: 0.3, ease: "easeInOut" }}
-              className="fixed top-20 left-[10%] transform -translate-x-1/2 h-[60vh] w-[80%] bg-[#393e46] z-50 shadow-xl md:hidden rounded-[18px] bg-gradient-to-b from-[#00ADB5] to-[#393E46] border-white"
+              className="fixed top-20 left-[10%] h-[60vh] w-[80%] bg-[#393e46] z-50 shadow-xl md:hidden rounded-[18px] bg-gradient-to-b from-[#00ADB5] to-[#393E46] border-white"
             >
               <div className="flex flex-col h-full">
                 {/* Close Button */}
                 <div className="flex justify-end p-4">
                   <motion.button
+                    ref={closeButtonRef}
                     onClick={toggleMenu}
+                    type="button"
+                    aria-label="Close navigation menu"
                     className="text-[#eeeeee] p-2 rounded-full hover:bg-[#ffffff20] transition-colors"
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
@@ -132,41 +163,18 @@ export default function Header() {
 
                 {/* Menu Items */}
                 <nav className="flex flex-col justify-center gap-6 p-6 mt-4">
-                  <motion.button
-                    onClick={() => {
-                      scrollToSection("home");
-                      toggleMenu();
-                    }}
-                    className="text-[#eeeeee] text-lg font-medium hover:text-[#393E46] transition-colors py-2"
-                    whileHover={{ x: 10 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    Home
-                  </motion.button>
-
-                  <motion.button
-                    onClick={() => {
-                      scrollToSection("about");
-                      toggleMenu();
-                    }}
-                    className="text-[#eeeeee] text-lg font-medium hover:text-[#393E46] transition-colors py-2"
-                    whileHover={{ x: 10 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    About Me
-                  </motion.button>
-
-                  <motion.button
-                    onClick={() => {
-                      scrollToSection("contact");
-                      toggleMenu();
-                    }}
-                    className="text-[#eeeeee] text-lg font-medium hover:text-[#393E46] transition-colors py-2"
-                    whileHover={{ x: 10 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    Contact
-                  </motion.button>
+                  {navItems.map((item) => (
+                    <motion.button
+                      key={item.sectionId}
+                      type="button"
+                      onClick={() => scrollToSection(item.sectionId)}
+                      className="text-[#eeeeee] text-lg font-medium hover:text-[#393E46] transition-colors py-2"
+                      whileHover={{ x: 10 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      {item.label}
+                    </motion.button>
+                  ))}
                 </nav>
               </div>
             </motion.div>

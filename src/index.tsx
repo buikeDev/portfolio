@@ -1,18 +1,15 @@
-import { ThemeProvider } from "./design/theme";
 import { createRoot } from "react-dom/client";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { FinalDesign } from "./screens/FinalDesign/FinalDesign";
-import { HireMeSection } from "./screens/FinalDesign/sections/HireMeSection";
+import { MotionConfig } from "framer-motion";
 
 createRoot(document.getElementById("app") as HTMLElement).render(
-
-  <ThemeProvider>
+  <MotionConfig reducedMotion="user">
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<FinalDesign />} />
-        <Route path="/hire-me" element={<HireMeSection />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </BrowserRouter>
-  </ThemeProvider>
-
+  </MotionConfig>,
 );

@@ -4,43 +4,21 @@ import {
   TabsList,
   TabsTrigger,
 } from "../../../../components/ui/tabs";
-import FirstCards from "../Cards/FirstCards";
-import SecondCards from "../Cards/SecondCards";
-import { motion, useScroll, useTransform } from "framer-motion";
+import {
+  motion,
+  useReducedMotion,
+  useScroll,
+  useTransform,
+} from "framer-motion";
 import { useRef } from "react";
-
-interface Project {
-  id: string;
-  title: string;
-  description: string;
-  image: string;
-  technologies: string[];
-}
-
-interface Category {
-  id: string;
-  name: string;
-  projects: Project[];
-}
-
-// Project data for mapping
-const projectCategories: Category[] = [
-  {
-    id: "1",
-    name: "First Page",
-    projects: [], // Add your projects here
-  },
-  {
-    id: "2",
-    name: "2nd Page",
-    projects: [],
-  },
-];
+import { ProjectCard } from "./ProjectCard";
+import { projectCategories, projects } from "./projects";
 
 const firstCategoryId = projectCategories[0].id;
 
 export const ProjectsSection = (): JSX.Element => {
   const sectionRef = useRef(null);
+  const shouldReduceMotion = useReducedMotion();
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start end", "end start"],
@@ -57,7 +35,7 @@ export const ProjectsSection = (): JSX.Element => {
     >
       <div className="max-w-[1440px] mx-auto px-4 lg:px-8 w-full">
         <motion.div
-          style={{ opacity, y }}
+          style={shouldReduceMotion ? undefined : { opacity, y }}
           className="text-center mb-12 lg:mb-16"
         >
           <h2 className="text-[#eeeeee] text-3xl lg:text-4xl font-bold mb-4">
@@ -69,7 +47,7 @@ export const ProjectsSection = (): JSX.Element => {
           </p>
         </motion.div>
 
-        <motion.div style={{ opacity, y }}>
+        <motion.div style={shouldReduceMotion ? undefined : { opacity, y }}>
           <Tabs defaultValue={firstCategoryId} className="w-full h-full">
             <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2 lg:gap-4 mb-5">
               <TabsList className="flex items-end gap-2 lg:gap-4">
@@ -94,16 +72,13 @@ export const ProjectsSection = (): JSX.Element => {
                 className="mt-8"
               >
                 <div className="w-full flex justify-center lg:justify-start lg:mt-10">
-                  {category.id === "1" && (
-                    <div className="flex justify-center w-full">
-                      <FirstCards />
-                    </div>
-                  )}
-                  {category.id === "2" && (
-                    <div className="flex justify-center w-full">
-                      <SecondCards />
-                    </div>
-                  )}
+                  <div className="grid w-full max-w-6xl grid-cols-1 gap-8 mx-auto md:grid-cols-2 lg:grid-cols-3">
+                    {projects
+                      .filter((project) => project.category === category.id)
+                      .map((project) => (
+                        <ProjectCard key={project.id} project={project} />
+                      ))}
+                  </div>
                 </div>
               </TabsContent>
             ))}

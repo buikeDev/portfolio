@@ -2,22 +2,17 @@ import { Button } from "../../../../components/ui/button";
 import { Card, CardContent } from "../../../../components/ui/card";
 import { Input } from "../../../../components/ui/input";
 import { Textarea } from "../../../../components/ui/textarea";
-import {
-  ArrowLeft,
-  Facebook,
-  Instagram,
-  Twitter,
-  Youtube,
-  Linkedin,
-} from "lucide-react";
+import { Facebook, Twitter, Linkedin } from "lucide-react";
 import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useContactForm } from "../../../../hooks/useContactForm";
 
 export const ContactFormSection = (): JSX.Element => {
+  const { status, submitForm, isSubmitting } = useContactForm();
   // Form field data for mapping
   const formFields = [
-    { id: "name", label: "Your name", placeholder: "Name", type: "input" },
-    { id: "email", label: "Your email", placeholder: "Email", type: "input" },
+    { id: "name", label: "Your name", placeholder: "Name", type: "text" },
+    { id: "email", label: "Your email", placeholder: "Email", type: "email" },
     {
       id: "message",
       label: "Your Message",
@@ -68,7 +63,13 @@ export const ContactFormSection = (): JSX.Element => {
 
             {/* Desktop illustration */}
             <div className="hidden lg:block">
-              <img src="/icons/climb.png" alt="icon" />
+              <img
+                src="/icons/climb.png"
+                alt=""
+                loading="lazy"
+                width="255"
+                height="348"
+              />
             </div>
 
             {/* Mobile simplified illustration */}
@@ -76,8 +77,11 @@ export const ContactFormSection = (): JSX.Element => {
               <div className="relative w-32 h-32">
                 <img
                   className="w-full h-full object-contain"
-                  alt="Contact illustratio"
+                  alt=""
                   src="/icons/hacker.png"
+                  loading="lazy"
+                  width="128"
+                  height="128"
                 />
               </div>
             </div>
@@ -90,6 +94,8 @@ export const ContactFormSection = (): JSX.Element => {
             <form
               action="https://formspree.io/f/xwpborjn"
               method="POST"
+              onSubmit={submitForm}
+              aria-busy={isSubmitting}
               className="flex flex-col gap-6 w-full max-w-[600px]"
             >
               <div className="flex flex-col lg:flex-row gap-6 w-full">
@@ -102,10 +108,12 @@ export const ContactFormSection = (): JSX.Element => {
                       {field.label}
                     </label>
                     <Input
-                      type="email"
-                      name="email"
+                      type={field.type}
+                      name={field.id}
                       id={field.id}
                       placeholder={field.placeholder}
+                      autoComplete={field.id}
+                      required
                       className="bg-[#393e4680] text-[#eeeeee] placeholder:text-[#eeeeee80] placeholder:font-bold rounded-2xl py-3 lg:py-4 px-4 lg:px-6 h-auto text-base"
                     />
                   </div>
@@ -123,30 +131,44 @@ export const ContactFormSection = (): JSX.Element => {
                   name="message"
                   id="message"
                   placeholder={formFields[2].placeholder}
+                  required
                   className="bg-[#393e4680] text-[#eeeeee] placeholder:text-[#eeeeee80] placeholder:font-bold rounded-2xl py-3 lg:py-4 px-4 lg:px-6 h-[200px] lg:h-[280px] resize-none text-base"
                 />
               </div>
 
               <Button
                 type="submit"
+                disabled={isSubmitting}
                 className="bg-color-3 hover:bg-color-3/90 text-[#eeeeee] font-['Poppins',Helvetica] font-bold text-base lg:text-lg rounded-3xl py-2.5 px-6 lg:px-8 w-full lg:w-fit flex items-center justify-center gap-2.5"
               >
-                Send Message
+                {isSubmitting ? "Sending..." : "Send Message"}
                 <img
                   className="w-6 h-6 lg:w-[30px] lg:h-[31px] align-center pt-[3px]"
-                  alt="Send"
+                  alt=""
                   src="/icons/send.png"
                 />
               </Button>
+              <div aria-live="polite" role="status" className="min-h-6">
+                {status === "success" && (
+                  <p className="text-sm text-emerald-400">
+                    Thanks! Your message has been sent successfully.
+                  </p>
+                )}
+                {status === "error" && (
+                  <p className="text-sm text-red-400">
+                    Your message could not be sent. Please try again.
+                  </p>
+                )}
+              </div>
             </form>
           </CardContent>
         </Card>
       </div>
 
       <div className="flex items-center gap-4 lg:gap-6 mt-4 lg:mt-5 justify-center">
-        {socialLinks.map((social, index) => (
+        {socialLinks.map((social) => (
           <a
-            key={index}
+            key={social.label}
             href={social.url}
             target="_blank"
             rel="noopener noreferrer"

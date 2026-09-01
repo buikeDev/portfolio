@@ -1,31 +1,38 @@
 import { DownloadIcon } from "lucide-react";
-import { AnimatePresence, motion, useAnimation, useInView } from "framer-motion";
+import {
+  AnimatePresence,
+  motion,
+  useAnimation,
+  useInView,
+  useReducedMotion,
+} from "framer-motion";
 import { Button } from "../../../../components/ui/button";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 
+const phrases = [
+  "FRONTEND-FOCUSED FULL-STACK DEVELOPER",
+  "I TURN IDEAS INTO PRODUCTION-READY WEB PRODUCTS",
+];
+
+const roles = [
+  "Ago Chukwubuikem Jideofor",
+  "a React developer",
+  "a React Native developer",
+  "a JavaScript developer",
+  "a Tailwind CSS developer",
+  "a Next.js and Node.js developer",
+];
+
 export const HeroSection = (): JSX.Element => {
   const navigate = useNavigate();
-
-  const phrases = [
-    "FRONTEND-FOCUSED FULL-STACK DEVELOPER",
-    "I TURN IDEAS INTO PRODUCTION-READY WEB PRODUCTS",
-  ];
+  const shouldReduceMotion = useReducedMotion();
 
   const [currentPhraseIndex, setCurrentPhraseIndex] = useState(0);
   const [displayText, setDisplayText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
 
-  const words = [
-    "Ago Chukwubuikem Jideofor",
-    "a React Developer",
-    "React Native Developer",
-    "JavaScript Developer",
-    "TailwindCSS Developer",
-    "a Nextjs, Nodejs Developer",
-  ];
-
-  const [currentWord, setCurrentWord] = useState(words[0]);
+  const [currentWord, setCurrentWord] = useState(roles[0]);
 
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
@@ -36,16 +43,20 @@ export const HeroSection = (): JSX.Element => {
   }, [isInView, controls]);
 
   useEffect(() => {
+    if (shouldReduceMotion) return;
+
     let index = 0;
     const interval = setInterval(() => {
-      index = (index + 1) % words.length;
-      setCurrentWord(words[index]);
+      index = (index + 1) % roles.length;
+      setCurrentWord(roles[index]);
     }, 2500);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [shouldReduceMotion]);
 
   useEffect(() => {
+    if (shouldReduceMotion) return;
+
     const currentPhrase = phrases[currentPhraseIndex];
     let timeout: number;
 
@@ -65,7 +76,9 @@ export const HeroSection = (): JSX.Element => {
     }
 
     return () => clearTimeout(timeout);
-  }, [displayText, currentPhraseIndex, isDeleting]);
+  }, [displayText, currentPhraseIndex, isDeleting, shouldReduceMotion]);
+
+  const visiblePhrase = shouldReduceMotion ? phrases[0] : displayText;
 
   const container = {
     hidden: { opacity: 0 },
@@ -89,7 +102,10 @@ export const HeroSection = (): JSX.Element => {
   };
 
   return (
-    <section className="relative w-full min-h-screen bg-background overflow-hidden">
+    <section
+      id="home"
+      className="relative w-full min-h-screen bg-background overflow-hidden"
+    >
       <div className="max-w-[1440px] mx-auto relative min-h-screen">
         <div className="relative z-20 px-6 lg:px-20 pt-36 lg:pt-56 max-w-5xl">
           <motion.div
@@ -130,10 +146,16 @@ export const HeroSection = (): JSX.Element => {
                 exit={{ opacity: 0 }}
                 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[1.05] text-foreground max-w-[900px]"
               >
-                {displayText}
+                {visiblePhrase}
                 <motion.span
-                  animate={{ opacity: [0, 1, 0] }}
-                  transition={{ repeat: Infinity, duration: 0.8 }}
+                  animate={
+                    shouldReduceMotion ? { opacity: 1 } : { opacity: [0, 1, 0] }
+                  }
+                  transition={
+                    shouldReduceMotion
+                      ? undefined
+                      : { repeat: Infinity, duration: 0.8 }
+                  }
                   className="ml-1 text-primary"
                 >
                   |
@@ -149,8 +171,12 @@ export const HeroSection = (): JSX.Element => {
             className="flex flex-col sm:flex-row gap-5 mt-4"
           >
             <motion.div
-              animate={{ y: [0, -8, 0] }}
-              transition={{ duration: 2, repeat: Infinity }}
+              animate={shouldReduceMotion ? undefined : { y: [0, -8, 0] }}
+              transition={
+                shouldReduceMotion
+                  ? undefined
+                  : { duration: 2, repeat: Infinity }
+              }
             >
               <Button
                 onClick={() => navigate("/hire-me")}
@@ -161,8 +187,12 @@ export const HeroSection = (): JSX.Element => {
             </motion.div>
 
             <motion.div
-              animate={{ y: [0, -8, 0] }}
-              transition={{ duration: 2, repeat: Infinity, delay: 0.4 }}
+              animate={shouldReduceMotion ? undefined : { y: [0, -8, 0] }}
+              transition={
+                shouldReduceMotion
+                  ? undefined
+                  : { duration: 2, repeat: Infinity, delay: 0.4 }
+              }
             >
               <Button
                 onClick={() => {

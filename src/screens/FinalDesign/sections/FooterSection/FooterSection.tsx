@@ -1,99 +1,49 @@
 import {
-  FacebookIcon,
   HomeIcon,
-  LinkedinIcon,
   PhoneIcon,
-  TwitterIcon,
   UserIcon,
-  YoutubeIcon,
 } from "lucide-react";
-import React from "react";
 import { Button } from "../../../../components/ui/button";
 
+const navLinks = [
+  { icon: HomeIcon, text: "Home", href: "#home" },
+  { icon: UserIcon, text: "About me", href: "#about" },
+  { icon: PhoneIcon, text: "Contact", href: "#contact" },
+];
+
 export const FooterSection = (): JSX.Element => {
-  // Navigation links data
-  const navLinks = [
-    {
-      icon: <HomeIcon className="w-5 h-5 lg:w-6 lg:h-6" />,
-      text: "Home",
-      href: "#",
-    },
-    {
-      icon: <UserIcon className="w-5 h-5 lg:w-6 lg:h-6" />,
-      text: "About me",
-      href: "#about",
-    },
-    {
-      icon: <PhoneIcon className="w-5 h-5 lg:w-6 lg:h-6" />,
-      text: "Contact",
-      href: "#",
-    },
-  ];
-
-  // Social media links data
-  const socialLinks = [
-    {
-      icon: <FacebookIcon className="w-5 h-5 lg:w-6 lg:h-6" />,
-      label: "Facebook",
-      url: "https://www.facebook.com/ago.bkem?mibextid=wwXIfr&mibextid=wwXIfr",
-    },
-    {
-      icon: <TwitterIcon className="w-5 h-5 lg:w-6 lg:h-6" />,
-      label: "Twitter",
-      url: "https://x.com/bkem_der_brainy?s=21",
-    },
-    {
-      icon: <LinkedinIcon className="w-5 h-5 lg:w-6 lg:h-6" />,
-      label: "Linkedin",
-      url: "https://linkedin.com/in/ago-chukwubuikem-aa84a1305",
-    },
-  ];
-
   return (
     <footer className="w-full min-h-[300px] lg:h-[400px] bg-color-1 flex flex-col items-center justify-center relative py-12 lg:py-0">
       <div className="w-full max-w-[475px] h-full flex flex-col items-center justify-center relative px-6">
         {/* Vertical line - hidden on mobile */}
         <img
           className="h-full w-px absolute left-[29px] hidden lg:block"
-          alt="Line"
+          alt=""
           src="/line-7.svg"
         />
 
         {/* Navigation links */}
         <nav className="flex flex-col lg:flex-row items-center gap-6 lg:gap-12 mb-8 lg:mb-10">
-          {navLinks.map((link, index) => (
-            <Button
-              key={index}
-              variant="ghost"
-              className="inline-flex items-center gap-2.5 p-2.5 text-[#eeeeee] hover:bg-color-2 text-base lg:text-lg"
-              asChild
-            >
-              <a href={link.href}>
-                {link.icon}
-                <span className="font-normal font-['Poppins',Helvetica]">
-                  {link.text}
-                </span>
-              </a>
-            </Button>
-          ))}
-        </nav>
+          {navLinks.map((link) => {
+            const Icon = link.icon;
 
-        {/* Social media icons */}
-        {/* <div className="flex items-center gap-4 lg:gap-6 mt-4 lg:mt-5">
-          {socialLinks.map((social, index) => (
-            <Button
-              key={index}
-              variant="ghost"
-              size="icon"
-              className="w-10 h-10 lg:w-12 lg:h-12 bg-color-2 rounded-full flex items-center justify-center hover:bg-color-3"
-            >
-              <a href={social.url}>
-                {social.icon}
-                <span className="sr-only">{social.label}</span>
-              </a>
-            </Button>
-          ))}
-        </div> */}
+            return (
+              <Button
+                key={link.href}
+                variant="ghost"
+                className="inline-flex items-center gap-2.5 p-2.5 text-[#eeeeee] hover:bg-color-2 text-base lg:text-lg"
+                asChild
+              >
+                <a href={link.href}>
+                  <Icon className="w-5 h-5 lg:w-6 lg:h-6" />
+                  <span className="font-normal font-['Poppins',Helvetica]">
+                    {link.text}
+                  </span>
+                </a>
+              </Button>
+            );
+          })}
+        </nav>
       </div>
 
       {/* Terms and Privacy */}
