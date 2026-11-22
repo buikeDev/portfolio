@@ -17,11 +17,33 @@ export const projectCategories: Array<{
   id: ProjectCategory;
   name: string;
 }> = [
-  { id: "featured", name: "Featured" },
-  { id: "more", name: "More Projects" },
-];
+    { id: "featured", name: "Featured" },
+    { id: "more", name: "More Projects" },
+  ];
 
 export const projects: Project[] = [
+  {
+    id: "bandits-ecommerce",
+    category: "featured",
+    imageSrc: "/images/bandits.png",
+    altText: "BAND-IT e-commerce and wristband fulfilment platform",
+    title: "BAND-IT E-commerce Platform",
+    description:
+      "A modern e-commerce and fulfilment platform built for purchasing wristbands and related products. The platform is designed to streamline product discovery, online shopping, marketplace visibility, and order fulfilment through a scalable full-stack architecture.",
+    tech: [
+      "Next.js 14",
+      "React 18",
+      "TypeScript",
+      "Tailwind CSS",
+      "Node.js",
+      "Express.js",
+      "PostgreSQL",
+      "Prisma ORM",
+      "Neon",
+    ],
+    demoUrl: "https://bandits-backend-three.vercel.app/",
+    codeUrl: "https://github.com/buikeDev/bandits",
+  },
   {
     id: "neme-blog",
     category: "featured",

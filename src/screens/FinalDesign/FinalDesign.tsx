@@ -96,7 +96,7 @@ const experience = [
 const featuredProjects = ["ounje-mobile", "ounje-landing"]
   .map((id) => projects.find((project) => project.id === id))
   .filter((project): project is (typeof projects)[number] => Boolean(project));
-const secondaryProjects = ["neme-blog", "settings-dashboard", "beekeys"]
+const secondaryProjects = ["neme-blog", "bandits-ecommerce", "beekeys"]
   .map((id) => projects.find((project) => project.id === id))
   .filter((project): project is (typeof projects)[number] => Boolean(project));
 
@@ -124,11 +124,11 @@ export const FinalDesign = (): JSX.Element => {
     shouldReduceMotion
       ? {}
       : {
-          initial: { opacity: 0, y: distance },
-          whileInView: { opacity: 1, y: 0 },
-          viewport: { once: true, amount: 0.18 },
-          transition: { duration: 0.65, delay, ease: "easeOut" },
-        };
+        initial: { opacity: 0, y: distance },
+        whileInView: { opacity: 1, y: 0 },
+        viewport: { once: true, amount: 0.18 },
+        transition: { duration: 0.65, delay, ease: "easeOut" },
+      };
 
   useEffect(() => {
     if (!isLoading) return;
@@ -501,7 +501,7 @@ export const FinalDesign = (): JSX.Element => {
                     className="tag-list"
                     aria-label={`${project.title} technologies`}
                   >
-                    {project.tech.slice(0, 3).map((technology) => (
+                    {project.tech.map((technology) => (
                       <li key={technology}>{technology}</li>
                     ))}
                   </ul>
